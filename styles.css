@@ -75,7 +75,7 @@ body {
 .secretback {
 	display: grid;
 	position: absolute;
-	background-image: url("/assets/kot.png");
+	background-image: url("assets/kot.jpg");
 	height: 100%;
 }
 .finishtext {
