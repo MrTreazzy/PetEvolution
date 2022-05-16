@@ -61,6 +61,7 @@ body {
 .mur {
 	display: grid;
 	justify-items: center;
+	width: 160px;
 }
 .statsdiv {
 	display: grid;

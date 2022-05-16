@@ -95,8 +95,8 @@ function Finish(stat) {
 	if (stat >= 100) {
 		finish.removeAttribute("disabled")
 	}
-	if (stat == 1000) {
-		mur.textContent = "Чего ты добиваешься???"
+	if (stat >= 1000) {
+		mur.textContent = "Чего ты черт возьми добиваешься???"
 	}
 }
 
