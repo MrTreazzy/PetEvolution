@@ -115,7 +115,7 @@ setInterval(() => {
 
 finish.onclick = () => {
 	titles.setAttribute("class", "titles")
-	titles.textContent = "Pet Evolution v1.0 | Made by MrTreazzy"
+	titles.textContent = "Pet Evolution v1.1 | Made by MrTreazzy"
 
 	finishtext1.setAttribute("class", "finishtext")
 	finishtext1.textContent = "Thank you for playing in my new project Pet Evolution!\
