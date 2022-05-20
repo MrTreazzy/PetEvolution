@@ -24,7 +24,6 @@ clikerbtn.onclick = () => {
 	if (coin == 666) {
 		asec.setAttribute("href", "http://mrtreazzy.github.io/jswebsite1")
 		asec.textContent = "click"
-		console.log("!DO NOT CHEAT!")
 	}
 	BlockShop(coin);
 }
@@ -162,7 +161,7 @@ finish.onclick = () => {
 	And so, its my first project, my first game.\
 	Sure, its just first version of this project and im going to update it.\
 	I hope you will waiting for release of new version of this game, isnt it?)\
-	Sorry for my bad Eng :3 So... See ya later!", "Click here for English message!"]
+	Sorry for my bad Eng :3 So... See ya later!", "Click here for Congratulations!"]
 	let n1 = 0
 	finishtext1.onclick = () => {
 		finishtext1.textContent = finishtexteng[n1]
@@ -260,6 +259,7 @@ function logKey(e) {
 		n = n + 1
 	}
 	if (n == 4 || stat == 10000) {
+		console.log("!DO NOT CHEAT!")
 		itemshop5.setAttribute("class", "hackshop")
 		item5h3.textContent = ""
 		itemshop5.onclick = () => {
