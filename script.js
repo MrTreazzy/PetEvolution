@@ -9,16 +9,16 @@ let stats = document.getElementById("stats")
 let finish = document.getElementById("finishbtn")
 let asec = document.getElementById("secretlink")
 
-let n = 0
+let cps = 0
 let coin = 0
 clikerbtn.onclick = () => {
-	if (n == 0) {
+	if (cps == 0) {
 		setTimeout(() => {
-			clicks.textContent = n
-			n = 0
+			clicks.textContent = cps
+			cps = 0
 		}, 1000)
 	}
-	n += 1
+	cps += 1
 	coin += 1
 	coinvalue.textContent = "Coin: " + coin
 	if (coin == 666) {
@@ -26,6 +26,7 @@ clikerbtn.onclick = () => {
 		asec.textContent = "click"
 		console.log("!DO NOT CHEAT!")
 	}
+	BlockShop(coin);
 }
 
 murcount = 0
@@ -51,7 +52,8 @@ itemshop1.onclick = () => {
 		coinvalue.textContent = "Coin: " + coin
 		stat = stat + 10
 		stats.textContent = "Complete: " + stat + "%"
-		Finish(stat)
+		Finish(stat);
+		BlockShop(coin);
 	}
 }
 itemshop2.onclick = () => {
@@ -60,7 +62,8 @@ itemshop2.onclick = () => {
 		coinvalue.textContent = "Coin: " + coin
 		stat = stat + 20
 		stats.textContent = "Complete: " + stat + "%"
-		Finish(stat)
+		Finish(stat);
+		BlockShop(coin);
 	}
 }
 itemshop3.onclick = () => {
@@ -69,7 +72,8 @@ itemshop3.onclick = () => {
 		coinvalue.textContent = "Coin: " + coin
 		stat = stat + 30
 		stats.textContent = "Complete: " + stat + "%"
-		Finish(stat)
+		Finish(stat);
+		BlockShop(coin);
 	}
 }
 itemshop4.onclick = () => {
@@ -78,7 +82,8 @@ itemshop4.onclick = () => {
 		coinvalue.textContent = "Coin: " + coin
 		stat = stat + 40
 		stats.textContent = "Complete: " + stat + "%"
-		Finish(stat)
+		Finish(stat);
+		BlockShop(coin);
 	}
 }
 itemshop5.onclick = () => {
@@ -87,16 +92,46 @@ itemshop5.onclick = () => {
 		coinvalue.textContent = "Coin: " + coin
 		stat = stat + 50
 		stats.textContent = "Complete: " + stat + "%"
-		Finish(stat)
+		Finish(stat);
+		BlockShop(coin);
 	}
 }
 
 function Finish(stat) {
 	if (stat >= 100) {
 		finish.removeAttribute("disabled")
+		finish.setAttribute("class", "finishbtnOpen")
 	}
 	if (stat >= 1000) {
 		mur.textContent = "Чего ты черт возьми добиваешься???"
+	}
+}
+
+function BlockShop(coin) {
+	if (coin < 10) {
+		itemshop1.setAttribute("class", "itemshopbtnblock")
+	} else {
+		itemshop1.setAttribute("class", "itemshopbtn")
+	}
+	if (coin < 20) {
+		itemshop2.setAttribute("class", "itemshopbtnblock")
+	} else {
+		itemshop2.setAttribute("class", "itemshopbtn")
+	}
+	if (coin < 30) {
+		itemshop3.setAttribute("class", "itemshopbtnblock")
+	} else {
+		itemshop3.setAttribute("class", "itemshopbtn")
+	}
+	if (coin < 40) {
+		itemshop4.setAttribute("class", "itemshopbtnblock")
+	} else {
+		itemshop4.setAttribute("class", "itemshopbtn")
+	}
+	if (coin < 50) {
+		itemshop5.setAttribute("class", "itemshopbtnblock")
+	} else {
+		itemshop5.setAttribute("class", "itemshopbtn")
 	}
 }
 
@@ -114,17 +149,29 @@ setInterval(() => {
 }, 1000)
 
 finish.onclick = () => {
+	finishtextdiv.style.width = "100%"
+
 	titles.setAttribute("class", "titles")
-	titles.textContent = "Pet Evolution v1.1 | Made by MrTreazzy"
+	titles.textContent = "Pet Evolution v2.0 | Made by MrTreazzy"
 
 	finishtext1.setAttribute("class", "finishtext")
-	finishtext1.textContent = "Thank you for playing in my new project Pet Evolution!\
+	finishtext1.textContent = "Click here for Congratulations!"
+	let finishtexteng = ["Thank you for playing in my new project Pet Evolution!\
 	I really proud of you cuz its just awesome what you just finish my game!\
 	You are clicked 100 times, its been very hard i guess...\
 	And so, its my first project, my first game.\
 	Sure, its just first version of this project and im going to update it.\
 	I hope you will waiting for release of new version of this game, isnt it?)\
-	Sorry for my bad Eng :3 So... See ya later!"
+	Sorry for my bad Eng :3 So... See ya later!", "Click here for English message!"]
+	let n1 = 0
+	finishtext1.onclick = () => {
+		finishtext1.textContent = finishtexteng[n1]
+		if (n1 == 0) {
+			n1 = 1
+		} else {
+			n1 = 0
+		}
+	}
 
 	gametime1.setAttribute("class", "gametime")
 	gametime1.textContent = "Well, you finished the game in " + sec + " second."
@@ -133,18 +180,164 @@ finish.onclick = () => {
 	gametime2.textContent = "Неплохо, ты прошел игру за " + sec + " секунд."
 
 	finishtext2.setAttribute("class", "finishtext")
-	finishtext2.textContent = "RUS: А теперь на понятном языке. На англ писал без переводчика кстати :3\
+	finishtext2.textContent = "Нажми сюда для поздравлений!"
+	let finishtextrus = ["RUS: А теперь на понятном языке. На англ писал без переводчика кстати :3\
 	Вобщем пасибочки тебе за игру на моем проекте Pet Evolution!\
-	Наверное мне стоит гордится тобой, ведь ты тот, кто действительно ее прошел.\
+	Наверное мне стоит гордится тобой, ведь ты тот, кто действительно ее решил пройти.\
 	Думаю это было трудно, ты кликнул 100 раз чтобы ее пройти...\
 	Но все же, это мой первый проект, моя первая игра.\
 	Конечно, это была первая версия этой игры и я буду ее улучшать в скором времени.\
 	Надеюсь, ты оценишь ее и будешь ждать выход новой версии, не так ли?)\
-	Ну чтож, пока попрощаюсь, буду тоже ждать тебя на моем проекте! Бывай)"
+	Ну чтож, пока попрощаюсь, буду тоже ждать тебя на моем проекте! Бывай)", "Нажми сюда для поздравлений!"]
+	let n2 = 0
+	finishtext2.onclick = () => {
+		finishtext2.textContent = finishtextrus[n2]
+		if (n2 == 0) {
+			n2 = 1
+		} else {
+			n2 = 0
+		}
+	}
 
 	secrettitle.setAttribute("class", "secrettitle")
 	secrettitle.textContent = "wait...???"
 	secrettitle.onclick = () => {
 		finishtextdiv.setAttribute("class", "secretback")
+	}
+}
+
+let regbtn = document.getElementById('regbtn');
+let regtext = document.getElementById('regtext');
+let errregdiv = document.getElementById('errregdiv');
+
+regdialogue = ["- Непонял, как это не работает?", "- Незнаю, скорее всего кто-то недоработал механизм регистрации!", "- Хмм, действительно, её нет. Хорошо, тогда вернем нашего посетителя обратно.", "- Окей, возвращаю..."]
+
+regbtn.onclick = () => {
+	errregdiv.style.width = "100%"
+	regtext.setAttribute("class", "regtext")
+	regtext.textContent = "- Упс! Кажется регистрация не работает..."
+	num = 0
+	regtext.onclick = () => {
+		regtext.textContent = regdialogue[num]
+		num = num + 1
+		if (num == 4) {
+			num = 3
+			setTimeout(() => {
+				regtext.textContent = ""
+				errregdiv.style.width = "0"
+				regtext.removeAttribute("class")
+				regbtn.remove();
+			}, 3000)
+		}
+	}
+}
+
+let hackdiv = document.getElementById('hackdiv');
+let hackcoinh3 = document.getElementById('hackcoinh3');
+let hackprogressh3 = document.getElementById('hackprogressh3');
+let item5h3 = document.getElementById('item5h3');
+let br1 = document.getElementById('br1');
+let br2 = document.getElementById('br2');
+let policediv = document.getElementById('policediv');
+let policetext1 = document.getElementById('policetext1');
+let policetext2 = document.getElementById('policetext2');
+
+let n = 0
+document.addEventListener('keydown', logKey);
+
+function logKey(e) {
+	let a = `${e.key}`
+	if (a == "h" && n == 0) {
+		n = n + 1
+	}
+	if (a == "a" && n == 1) {
+		n = n + 1
+	}
+	if (a == "c" && n == 2) {
+		n = n + 1
+	}
+	if (a == "k" && n == 3) {
+		n = n + 1
+	}
+	if (n == 4 || stat == 10000) {
+		itemshop5.setAttribute("class", "hackshop")
+		item5h3.textContent = ""
+		itemshop5.onclick = () => {
+			hackcoinh3.setAttribute("class", "regtext")
+			hackprogressh3.setAttribute("class", "regtext")
+			hackdiv.style.width = "100%"
+			hackcoinh3.textContent = "Coin: "
+			hackprogressh3.textContent = "Progress: "
+			hackcoinh3.style.color = "#fff"
+			hackprogressh3.style.color = "#fff"
+
+			let coininput = document.createElement('input')
+			coininput.id = "hackcoininput"
+			coininput.type = "number"
+			coininput.name = "coin"
+			coininput.className = "hackinput"
+			hackcoinh3.append(coininput);
+			
+			let proginput = document.createElement('input')
+			proginput.id = "hackproginput"
+			proginput.type = "number"
+			proginput.name = "prog"
+			proginput.className = "hackinput"
+			hackprogressh3.append(proginput);
+			
+			let hacksubmitfake = document.createElement('input')
+			hacksubmitfake.id = "hacksubmitfake"
+			hacksubmitfake.type = "submit"
+			hacksubmitfake.value = "HACK"
+			hacksubmitfake.className = "hacksubmitfake"
+			br1.after(hacksubmitfake);
+			
+			let hacksubmit = document.createElement('input')
+			hacksubmit.id = "hacksubmit"
+			hacksubmit.type = "submit"
+			hacksubmit.value = "exit"
+			hacksubmit.className = "hacksubmit"
+			br2.after(hacksubmit);
+
+			hacksubmit.onclick = () => {
+				hackcoinh3.textContent = ""
+				hackprogressh3.textContent = ""
+				hackdiv.style.width = "0"
+				coininput.remove();
+				proginput.remove();
+				hacksubmitfake.remove();
+				hacksubmit.remove();
+				itemshop5.setAttribute("class", "itemshopbtn")
+				item5h3.textContent = "ITEM5 for 50 ©"
+
+				coin = coininput.valueAsNumber
+				stat = proginput.valueAsNumber
+				coinvalue.textContent = "Coin: " + coin
+				stats.textContent = "Complete: " + stat + "%"
+				Finish(stat)
+			}
+			hacksubmitfake.onclick = () => {
+				hackcoinh3.textContent = ""
+				hackprogressh3.textContent = ""
+				hackdiv.style.width = "0"
+				coininput.remove();
+				proginput.remove();
+				hacksubmitfake.remove();
+				hacksubmit.remove();
+				itemshop5.setAttribute("class", "itemshopbtn")
+				item5h3.textContent = "ITEM5 for 50 ©"
+
+				policetext1.setAttribute("class", "policeh1")
+				policetext2.setAttribute("class", "policetext")
+				policediv.style.width = "100%"
+				policediv.style.backgroundColor = "red"
+				policetext1.textContent = "!ATTENTION!"
+				policetext2.textContent = "You have been caught for cheating! \
+				Please, raise your dirty hands from your keyboard! \
+				You have been fined 10,000 social credits and 1 bowl of rice. \
+				Quickly press F5 on your keyboard with your nose to evade arrest. \
+				With love, FBI."
+			}
+		}
 	}
 }

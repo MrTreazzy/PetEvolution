@@ -5,20 +5,69 @@ body {
 	background-color: aqua;
 }
 .section {
-	background-color: aquamarine;
+	box-shadow: inset 0 0 20px black;
 	height: 100vh;
 	display: grid;
 	grid-template-rows: 10% 90%;
-	border-right: 8px groove gray;
+	border-right: 8px groove rgb(110, 110, 110);
+}
+.cliker {
+	background-image: url("/assets/bgGold.jpg");
+	grid-template-rows: 10% 86% 4%;
+}
+.pet {
+	background-image: url("/assets/bgRed.png");
+}
+.shop {
+	background-image: url("/assets/bgMoney.jpg");
+}
+.btn {
+	background-color: transparent;
+	border-radius: 25px;
 }
 .titlediv {
-	background-color: azure;
+	background-color: rgb(224, 224, 224);
+	background-image: url("/assets/OakTexture1.png");
 	display: grid;
 	justify-content: center;
 	align-content: center;
+	box-shadow: 0 0 10px #230e0b;
+}
+.pettitlediv {
+	grid-template-columns: 1fr 1fr 1fr;
+	justify-items: center;
+}
+@font-face {
+	font-family: Libre Baskerville;
+	src: url("/assets/LibreBaskerville-Bold.ttf");
 }
 .title {
 	margin: 0;
+	font-family: Libre Baskerville;
+	font-size: 37px;
+	color: #d3d3d3;
+	text-shadow: 0 0 2px #e2e2e2;
+}
+.reg {
+	display: grid;
+	justify-content: center;
+}
+.regbtn {
+	border-radius: 20px;
+	width: 100px;
+	background-color: rgb(139, 139, 139);
+	box-shadow: inset 0 0 10px #d3d3d3;
+}
+.regbtn:hover {
+	box-shadow: inset 0 0 10px rgb(27, 27, 27);
+}
+.regh3 {
+	font-size: 17px;
+	margin: 0;
+}
+.errregbtn {
+	width: 0;
+	height: 0;
 }
 .clikerdiv {
 	display: grid;
@@ -28,12 +77,21 @@ body {
 .clikerbtndiv {
 	display: grid;
 	justify-items: center;
-}
-.clikerbtn {
-	margin-bottom: 5px;
+	margin-top: 45px;
 }
 .clicksh3 {
 	margin: 0;
+	font-size: 20px;
+}
+.clicksh3num {
+	margin: 0;
+	font-size: 23px;
+	font-weight: bolder;
+}
+.cpsdiv {
+	display: grid;
+	justify-items: center;
+	margin-top: 10px;
 }
 .coindiv {
 	display: grid;
@@ -42,13 +100,20 @@ body {
 }
 .coinh3 {
 	margin: 5px 0 0 0;
-	font-size: 25px;
+	font-size: 35px;
+	text-shadow: 0 0 5px #a8a8a8;
+	color: #c5c5c5;
 }
 .petdiv {
 	display: grid;
   justify-items: center;
   grid-template-rows: 10% 90%;
   align-items: center;
+}
+.petbtndiv {
+	margin-bottom: -5px;
+	display: grid;
+	justify-items: center;
 }
 .shopdiv {
 	display: grid;
@@ -61,13 +126,14 @@ body {
 .mur {
 	display: grid;
 	justify-items: center;
-	width: 160px;
+	width: 180px;
+	margin-bottom: 0;
 }
 .statsdiv {
 	display: grid;
 	justify-items: center;
 }
-.finishtextdiv {
+.textdiv {
 	display: grid;
 	position: absolute;
 	background-color: aliceblue;
@@ -76,11 +142,38 @@ body {
 .secretback {
 	display: grid;
 	position: absolute;
-	background-image: url("assets/kot.jpg");
+	background-image: url("/assets/kot.png");
 	height: 100%;
 }
 .finishtext {
-	margin: 30px 60px 0 40px;
+	margin: 30px 50px 0 50px;
+}
+.finishbtn {
+	width: 140px;
+	height: 40px;
+	border-radius: 20px;
+}
+.finishbtnOpen {
+	width: 140px;
+	height: 40px;
+	border-radius: 20px;
+	background-color: #ff9a26;
+	box-shadow: 0 0 10px rgb(0, 0, 0), inset 0 0 13px #ffd7aa;
+}
+.finishbtnOpen:hover {
+	box-shadow: inset 0 0 13px rgb(27, 27, 27);
+}
+.finishtextbtn {
+	margin: 0;
+	font-size: 20px;
+}
+.finishtextdiv {
+	box-shadow: inset 0 0 30px rgb(46, 46, 46);
+	grid-template-rows: 15% 25% 10% 10% 35% 5%;
+}
+.regtext {
+	margin: 100px 60px 0 100px;
+	height: 60px;
 }
 .gametime {
 	margin: 0;
@@ -98,8 +191,52 @@ body {
 	display: grid;
   justify-content: start;
   align-items: center;
+	width: 150px;
 }
 .secrettitle:hover {
 	background-color: #ffffff;
 	width: 100px;
+}
+.hackshop {
+	background-image: url("/assets/javascriptconsoleBackground.png");
+}
+.hackdiv {
+	background-image: url("/assets/javascriptconsoleBackground.png");
+}
+.hackinput {
+	height: 30px;
+	width: 300px;
+}
+.hacksubmitfake {
+	height: 50px;
+	width: 150px;
+	margin-left: 47%;
+}
+.hacksubmit {
+	height: 30px;
+	width: 50px;
+	background-color: black;
+}
+.policeh1 {
+	font-size: 50px;
+	margin-top: 100px;
+}
+.policetext {
+	margin: 50px 60px 0 100px;
+}
+.itemshopbtn {
+	background-image: url("/assets/storeTile.png");
+	margin: 0;
+	border: 0;
+}
+.itemshopbtnblock {
+	background-image: url("/assets/storeTileBlock.png");
+	margin: 0;
+	border: 0;
+}
+.version {
+	margin: 8px;
+	font-size: 20px;
+	text-shadow: -1px 1px 2px #000;
+	color: rgb(37, 24, 0);
 }
