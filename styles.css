@@ -16,7 +16,7 @@ body {
 	grid-template-rows: 10% 86% 4%;
 }
 .pet {
-	background-image: url("assets/bgRed.png");
+	background-image: url("assets/bgRed.jpg");
 }
 .shop {
 	background-image: url("assets/bgMoney.jpg");
@@ -27,7 +27,7 @@ body {
 }
 .titlediv {
 	background-color: rgb(224, 224, 224);
-	background-image: url("assets/OakTexture1.png");
+	background-image: url("assets/OakTexture1.jpg");
 	display: grid;
 	justify-content: center;
 	align-content: center;
@@ -142,7 +142,7 @@ body {
 .secretback {
 	display: grid;
 	position: absolute;
-	background-image: url("assets/kot.png");
+	background-image: url("assets/kot.jpg");
 	height: 100%;
 }
 .finishtext {
@@ -198,10 +198,10 @@ body {
 	width: 100px;
 }
 .hackshop {
-	background-image: url("assets/javascriptconsoleBackground.png");
+	background-image: url("assets/javascriptconsoleBackground.jpg");
 }
 .hackdiv {
-	background-image: url("assets/javascriptconsoleBackground.png");
+	background-image: url("assets/javascriptconsoleBackground.jpg");
 }
 .hackinput {
 	height: 30px;
@@ -225,12 +225,12 @@ body {
 	margin: 50px 60px 0 100px;
 }
 .itemshopbtn {
-	background-image: url("assets/storeTile.png");
+	background-image: url("assets/storeTile.jpg");
 	margin: 0;
 	border: 0;
 }
 .itemshopbtnblock {
-	background-image: url("assets/storeTileBlock.png");
+	background-image: url("assets/storeTileBlock.jpg");
 	margin: 0;
 	border: 0;
 }
