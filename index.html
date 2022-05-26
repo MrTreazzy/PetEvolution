@@ -9,12 +9,31 @@
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+	<div class="textdiv petformdiv" id="petformdiv">
+		<div class="container" id="container">
+			<div class="item1">
+				<h1 id="petform_title" class="petform_title">Привет, рад тебя видеть!</h1>
+				<p id="petform_title2" class="petform_title2">Пожалуйста, дай имя своему питомцу.</p>
+				<br>
+	
+				<label for="email"><b id="petform_name" class="petform_name">Имя питомца</b></label>
+				<input type="text" placeholder="Введите имечко..." name="name" id="petform_inputname" class="petform_inputname"	required />
+				<label for="psw"><b id="petform_psw" class="petform_psw">Пароль</b></label>
+				<input type="password" placeholder="Введите пароль не менее 6 символов..." name="psw" id="petform_inputpsw" minlength="6" class="petform_inputpsw" required>
+	
+				<br>
+				<p id="confirm_rules" class="confirm_rules">Создавая аккаунт Вы соглашаетесь с нашими <a id="a_confirm_rules" class="a_confirm_rules">Правилами конфеденциальности</a>.</p>
+			</div>
+			<button type="submit" class="registerbtn" id="petform_confirm"><span class="textbutton">Выдать питомца!</span></button>
+		</div>
+	</div>
 	<div class="textdiv finishtextdiv" id="finishtextdiv">
 		<h1 id="titles"></h1>
 		<h1 id="finishtext1"></h1>
 		<h1 id="gametime1"></h1>
 		<h2 id="gametime2"></h2>
 		<h2 id="finishtext2"></h2>
+		<h2 id="contactus"></h2>
 		<h2 id="secrettitle"></h2>
 	</div>
 	<div class="textdiv errregdiv" id="errregdiv">
@@ -36,14 +55,14 @@
 		</div>
 		<div class="clikerdiv">
 			<div class="centralbtn clikerbtndiv">
-				<button class="btn clikerbtn" id="clikerbtn"><img src="assets/favicon.ico" width="170px" height="170px" alt="sorry"></button>
+				<button class="btn clikerbtn" id="clikerbtn"><img src="assets/clikerico.ico" width="140px" height="140px" alt="sorry"></button>
 				<div class="cpsdiv">
 					<h3 class="clicksh3">Clicks per Second: <h3 class="clicksh3num" id="clicksh3">0</h3></h3>
 				</div>
 			</div>
 		</div>
 		<div class="versiondiv">
-			<h4 class="version">v. 2.0</h4>
+			<h4 class="version">v. 0.5</h4>
 		</div>
 	</div>
 	<div class="section pet">
@@ -59,8 +78,11 @@
 				<h3 class="coinh3" id="coin">Coin: 0</h3>
 			</div>
 			<div class="centralpet">
+				<div class="petnamediv">
+					<h2 class="petname" id="petname">Pet Name</h2>
+				</div>
 				<div class="centralbtn petbtndiv">
-					<button class="btn petbtn" id="petbtn"><img src="assets/favicon.ico" width="170px" height="170px" alt="sorry"></button>
+					<button class="btn petbtn" id="petbtn"><img src="assets/cat.ico" width="150px" height="150px" alt="sorry"></button>
 					<h2 class="mur" id="mur"></h2>
 				</div>
 				<div class="statsdiv">
@@ -75,11 +97,11 @@
 			<h1 class="title">Shop</h1>
 		</div>
 		<div class="shopdiv">
-			<button class="itemshopbtnblock" id="item1"><h1>ITEM1 for 10 ©</h1></button>
-			<button class="itemshopbtnblock" id="item2"><h1>ITEM2 for 20 ©</h1></button>
-			<button class="itemshopbtnblock" id="item3"><h1>ITEM3 for 30 ©</h1></button>
-			<button class="itemshopbtnblock" id="item4"><h1>ITEM4 for 40 ©</h1></button>
-			<button class="itemshopbtnblock" id="item5"><h1 id="item5h3">ITEM5 for 50 ©</h1></button>
+			<button class="itembtn itembtnblock" id="item1"><img id="itemico1" src="assets/poisonBlock.ico" height="64px" width="64px" alt="oh"><div class="iteminfo"><h1 class="itemtitle">ITEM1</h1><h2 class="itemprice">10 ©</h2></div></button>
+			<button class="itembtn itembtnblock" id="item2"><img id="itemico2" src="assets/poisonBlock.ico" height="64px" width="64px" alt="oh"><div class="iteminfo"><h1 class="itemtitle">ITEM2</h1><h2 class="itemprice">20 ©</h2></div></button>
+			<button class="itembtn itembtnblock" id="item3"><img id="itemico3" src="assets/poisonBlock.ico" height="64px" width="64px" alt="oh"><div class="iteminfo"><h1 class="itemtitle">ITEM3</h1><h2 class="itemprice">30 ©</h2></div></button>
+			<button class="itembtn itembtnblock" id="item4"><img id="itemico4" src="assets/poisonBlock.ico" height="64px" width="64px" alt="oh"><div class="iteminfo"><h1 class="itemtitle">ITEM4</h1><h2 class="itemprice">40 ©</h2></div></button>
+			<button class="itembtn itembtnblock" id="item5"><img id="itemico5" src="assets/poisonBlock.ico" height="64px" width="64px" alt="oh"><div class="iteminfo"><h1 class="itemtitle">ITEM5</h1><h2 class="itemprice">50 ©</h2></div></button>
 		</div>
 	</div>
 </body>
