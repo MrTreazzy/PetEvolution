@@ -62,7 +62,8 @@ petform_confirm.onclick = () => {
 		petform_inputname.remove();
 		petform_psw.textContent = ""
 		petform_inputpsw.remove();
-		confirm_rules.textContent = ""
+		confirm_rules.remove();
+		confirm_rules2.remove();
 		petform_confirm.remove();
 		petname.textContent = name
 	}
