@@ -22,12 +22,13 @@ let a_confirm_rules = document.getElementById('a_confirm_rules');
 let petform_confirm = document.getElementById('petform_confirm');
 let container = document.getElementById('container');
 petformdiv.style.width = "100%"
+let confirm_rules2 = document.createElement('p')
+confirm_rules.after(confirm_rules2);
 a_confirm_rules.onclick = () => {
 	confirm_rules.textContent = "Первое правило сайта Pet Evolution: никому не рассказывать о сайте Pet Evolution."
 	setTimeout(() => {
-		let confirm_rules2 = document.createElement('p')
 		confirm_rules2.className = "confirm_rules"
-		confirm_rules.after(confirm_rules2);
+		confirm_rules2.id = "confirm_rules2"
 		confirm_rules2.textContent = "Второе правило сайта Pet Evolution: пункт 1 бредит, нужно это все делать наоборот."
 	}, 3000)
 }
@@ -64,6 +65,7 @@ petform_confirm.onclick = () => {
 		petform_inputpsw.remove();
 		confirm_rules.remove();
 		confirm_rules2.remove();
+		petform_confirm.textContent = ""
 		petform_confirm.remove();
 		petname.textContent = name
 	}
