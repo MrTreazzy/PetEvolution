@@ -672,7 +672,7 @@ function petblock() {
 		minipetskin = 0
 	}
 }
-let audio = new Audio('assets/step.mp3');
+let audiostep = new Audio('assets/step.mp3');
 let petgor = 0
 let petver = 0
 let rotation = 0
@@ -687,7 +687,7 @@ function logKeyPet(e) {
 				rotation = "w"
 			}
 			if (minipetskin == 0) {
-				audio.play();
+				audiostep.play();
 			}
 			petgor -= 1
 			petimg.style.transform = "translate("+ petver + "px, " + petgor + "px)";
@@ -695,7 +695,7 @@ function logKeyPet(e) {
 		if (a == "a" || a == "ArrowLeft") {
 			if (minipetskin == 0) {
 				petimg.src = 'assets/freddyleft.ico'
-				audio.play();
+				audiostep.play();
 			}
 			rotation = "a"
 			petver -= 1
@@ -704,7 +704,7 @@ function logKeyPet(e) {
 		if (a == "s" || a == "ArrowDown") {
 			if (minipetskin == 0) {
 				petimg.src = 'assets/freddydown.ico'
-				audio.play();
+				audiostep.play();
 			}
 			rotation = "s"
 			petgor += 1
@@ -713,7 +713,7 @@ function logKeyPet(e) {
 		if (a == "d" || a == "ArrowRight") {
 			if (minipetskin == 0){
 				petimg.src = 'assets/freddyright.ico'
-				audio.play();
+				audiostep.play();
 			}
 			rotation = "d"
 			petver += 1
