@@ -17,8 +17,6 @@ let petform_title = document.getElementById('petform_title');
 let petform_title2 = document.getElementById('petform_title2');
 let petform_name = document.getElementById('petform_name');
 let petform_inputname = document.getElementById('petform_inputname');
-// let petform_psw = document.getElementById('petform_psw');
-// let petform_inputpsw = document.getElementById('petform_inputpsw');
 let petform_skin = document.getElementById('petform_skin');
 let confirm_rules = document.getElementById('confirm_rules');
 let a_confirm_rules = document.getElementById('a_confirm_rules');
@@ -322,7 +320,7 @@ a_confirm_rules.onclick = () => {
 	}, 3000)
 }
 petform_confirm.onclick = () => {
-	if (petform_inputname.value == "" || chooseticket == 0) { // || petform_inputpsw.value == "" || petform_inputpsw.value.length < 6
+	if (petform_inputname.value == "" || chooseticket == 0) {
 		if (petform_inputname.value == "") {
 			petform_name.textContent = "Напиши хоть какое-нибудь имя, ну пожалуйста)"
 		} else {
@@ -333,16 +331,9 @@ petform_confirm.onclick = () => {
 		} else {
 			petform_skin.textContent = "Выбери питомца"
 		}
-		// if (petform_inputpsw.value.length < 6) {
-		// 	petform_psw.textContent = "Эй! Твой пароль должен быть длинной не менее 6 символов. Учти это!"
-		// }
-		// if (petform_inputpsw.value == "") {
-		// 	petform_psw.textContent = "Ну придумай хоть что-нибудь, прошу тебя!"
-		// }
 	} else {
 		let name = petform_inputname.value
-		// let password = petform_inputpsw.value
-		let user = [name] //, password
+		let user = [name]
 		petform_title.textContent = "Пасибочки! :3"
 		petform_title2.textContent = "Сейчас загрузим твою игру...)"
 		setTimeout(() => {
@@ -358,8 +349,6 @@ petform_confirm.onclick = () => {
 		}, 3000)
 		petform_name.textContent = ""
 		petform_inputname.remove();
-		// petform_psw.textContent = ""
-		// petform_inputpsw.remove();
 		petform_skin.remove();
 		choosecat.remove();
 		choosedog.remove();
@@ -625,6 +614,7 @@ clikerbtn.onclick = () => {
 
 let version = document.getElementById('version');
 let petimg = document.getElementById('petimg');
+let peterrimg = document.getElementById('peterrimg');
 let minipetdiv = document.getElementById('minipetdiv');
 let tick = 0
 let minipetskin = 0
@@ -674,6 +664,7 @@ let audiostep = new Audio('assets/step.mp3');
 let petgor = 0
 let petver = 0
 let rotation = 0
+let timeout1 = setTimeout(() => {}, 10)
 function logKeyPet(e) {
 	if (tick == 0) {
 		let a = `${e.key}`
@@ -687,8 +678,8 @@ function logKeyPet(e) {
 			if (minipetskin == 0) {
 				audiostep.play();
 			}
-			petgor -= 1
-			petimg.style.transform = "translate("+ petver + "px, " + petgor + "px)";
+			petver -= 0.1
+			petimg.style.transform = "translate("+ petgor + "vw, " + petver + "vh)";
 		}
 		if (a == "a" || a == "ArrowLeft") {
 			if (minipetskin == 0) {
@@ -696,8 +687,8 @@ function logKeyPet(e) {
 				audiostep.play();
 			}
 			rotation = "a"
-			petver -= 1
-			petimg.style.transform = "translate("+ petver + "px, " + petgor + "px)";
+			petgor -= 0.1
+			petimg.style.transform = "translate("+ petgor + "vw, " + petver + "vh)";
 		}
 		if (a == "s" || a == "ArrowDown") {
 			if (minipetskin == 0) {
@@ -705,8 +696,8 @@ function logKeyPet(e) {
 				audiostep.play();
 			}
 			rotation = "s"
-			petgor += 1
-			petimg.style.transform = "translate("+ petver + "px, " + petgor + "px)";
+			petver += 0.1
+			petimg.style.transform = "translate("+ petgor + "vw, " + petver + "vh)";
 		}
 		if (a == "d" || a == "ArrowRight") {
 			if (minipetskin == 0){
@@ -714,8 +705,26 @@ function logKeyPet(e) {
 				audiostep.play();
 			}
 			rotation = "d"
-			petver += 1
-			petimg.style.transform = "translate("+ petver + "px, " + petgor + "px)";
+			petgor += 0.1
+			petimg.style.transform = "translate("+ petgor + "vw, " + petver + "vh)";
+		}
+		if (petgor >= 45.3 || petver >= 44 || petgor <= -50 || petver <= -50) {
+			if (petgor >= 45.3) {
+				petgor -= 1
+			} else if (petver >= 44) {
+				petver -= 1.5
+			} else if (petgor <= -50) {
+				petgor += 1
+			} else if (petver <= -50) {
+				petver += 1.5
+			}
+			clearTimeout(timeout1);
+			peterrimg.src = "assets/ERRfill.ico"
+			peterrimg.setAttribute("class", "peterrimg")
+			timeout1 = setTimeout(() => {
+				peterrimg.removeAttribute("src")
+				peterrimg.removeAttribute("class")
+			}, 2000);
 		}
 	}
 }
@@ -853,7 +862,7 @@ function FinishEnding() {
 	finishtextdiv.style.width = "100%"
 
 	titles.setAttribute("class", "titles")
-	titles.textContent = "Pet Evolution v0.7 | Made by MrTreazzy"
+	titles.textContent = "Pet Evolution v0.7 (Adaptive Update) | Made by MrTreazzy"
 
 	finishtext1.setAttribute("class", "finishtext")
 	finishtext1.textContent = "Click here for Congratulations!"
@@ -951,8 +960,6 @@ function item5open(coin) {
 		if (coin >= 50) {
 			coin = coin - 50
 			coinvalue.textContent = "Coin: " + coin
-			stathunger.value = stathunger.value + 50
-			stathappy.value = stathappy.value + 25
 			BlockShop(coin);
 		}
 	}
