@@ -3,28 +3,55 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- <meta name="viewport" content="height=device-height, initial-scale=1.0"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Pet evolution | Made by MrTreazzy</title>
 	<link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+	<div class="petdivblock" id="minipetdiv">
+		<img id="petimg" alt="">
+	</div>
 	<div class="textdiv petformdiv" id="petformdiv">
 		<div class="container" id="container">
 			<div class="item1">
-				<h1 id="petform_title" class="petform_title">Привет, рад тебя видеть!</h1>
-				<p id="petform_title2" class="petform_title2">Пожалуйста, дай имя своему питомцу.</p>
+				<h1 id="petform_title" class="petform_title"></h1>
+				<p id="petform_title2" class="petform_title2"></p>
 				<br>
 	
 				<label for="email"><b id="petform_name" class="petform_name">Имя питомца</b></label>
 				<input type="text" placeholder="Введите имечко..." name="name" id="petform_inputname" class="petform_inputname"	required />
-				<label for="psw"><b id="petform_psw" class="petform_psw">Пароль</b></label>
-				<input type="password" placeholder="Введите пароль не менее 6 символов..." name="psw" id="petform_inputpsw" minlength="6" class="petform_inputpsw" required>
-	
+				<!-- <label for="psw"><b id="petform_psw" class="petform_psw">Пароль</b></label>
+				<input type="password" placeholder="Введите пароль не менее 6 символов..." name="psw" id="petform_inputpsw" minlength="6" class="petform_inputpsw" required> -->
+				<br>
+				<b id="petform_skin" class="petform_name">Выбери питомца</b>
+				<div class="petchoosediv" id="petchoosediv">
+					<button class="choose cat" id="choosecat"><img src="assets/cat.ico" alt="sorry" width="85%" height="90%"></button>
+					<button class="choose dog" id="choosedog"><img src="assets/dog.ico" alt="sorry" width="85%" height="90%"></button>
+					<button class="choose dragon" id="choosedragon"><img src="assets/dragon.ico" alt="sorry" width="85%" height="90%"></button>
+				</div>
 				<br>
 				<p id="confirm_rules" class="confirm_rules">Создавая аккаунт Вы соглашаетесь с нашими <a id="a_confirm_rules" class="a_confirm_rules">Правилами конфеденциальности</a>.</p>
 			</div>
 			<button type="submit" class="registerbtn" id="petform_confirm"><span class="textbutton">Выдать питомца!</span></button>
+		</div>
+	</div>
+	<div class="textdiv settingdiv" id="settingdiv">
+		<div id="settingcontainer">
+			<h1 id="settingtitle" class="settingtitle"></h1>
+			<div class="settinglangdiv">
+				<h1 id="settinglang"></h1>
+			</div>
+			<div id="importdiv"></div>
+			<h2 id="settingcontactus"></h2>
+		</div>
+	</div>
+	<div class="exportdiv" id="exportdiv">
+		<div id="exportcontainer">
+			<h1 id="exporttitle" style="margin: 0;"></h1>
+			<div id="export"></div>
+			<div id="exportexitdiv"></div>
 		</div>
 	</div>
 	<div class="textdiv finishtextdiv" id="finishtextdiv">
@@ -55,14 +82,14 @@
 		</div>
 		<div class="clikerdiv">
 			<div class="centralbtn clikerbtndiv">
-				<button class="btn clikerbtn" id="clikerbtn"><img src="assets/clikerico.ico" width="140px" height="140px" alt="sorry"></button>
+				<button class="btn clikerbtn" id="clikerbtn"><img src="assets/clikerico.ico" width="95%" height="95%" alt="sorry"></button>
 				<div class="cpsdiv">
 					<h3 class="clicksh3">Clicks per Second: <h3 class="clicksh3num" id="clicksh3">0</h3></h3>
 				</div>
 			</div>
 		</div>
 		<div class="versiondiv">
-			<h4 class="version">v. 0.5</h4>
+			<h4 class="version" id="version">v. 0.7</h4>
 		</div>
 	</div>
 	<div class="section pet">
@@ -70,24 +97,41 @@
 			<br>
 			<h1 class="title">Your Pet</h1>
 			<div class="reg">
-				<button class="regbtn" id="regbtn"><h4 class="regh3">Sign in</h4></button>
+				<button class="settingbtn" id="settingbtn"><h4 class="settingh3">Settings</h4></button>
 			</div>
 		</div>
 		<div class="petdiv">
-			<div class="coindiv">
-				<h3 class="coinh3" id="coin">Coin: 0</h3>
+			<div class="menu">
+				<div class="coindiv">
+					<h3 class="coinh3" id="coin">Coin: 0</h3>
+				</div>
+				<div class="petstats">
+					<div class="petstat health">
+						<h3 class="stath3"><img src="assets/heart14x14.ico" alt="sorry">: </h3>
+						<progress id="stathealth" class="health statprog" min="0" max="100" value="100"></progress>
+					</div>
+					<div class="petstat hunger">
+						<h3 class="stath3"><img src="assets/hunger18x18.ico" alt="sorry">: </h3>
+						<progress id="stathunger" class="hunger statprog" min="0" max="100" value="100"></progress>
+					</div>
+					<div class="petstat happy">
+						<h3 class="stath3"><img src="assets/happy.ico" alt="sorry">: </h3>
+						<progress id="stathappy" class="happy statprog" min="0" max="100" value="100"></progress>
+					</div>
+				</div>
 			</div>
 			<div class="centralpet">
 				<div class="petnamediv">
 					<h2 class="petname" id="petname">Pet Name</h2>
 				</div>
 				<div class="centralbtn petbtndiv">
-					<button class="btn petbtn" id="petbtn"><img src="assets/cat.ico" width="150px" height="150px" alt="sorry"></button>
-					<h2 class="mur" id="mur"></h2>
+					<button class="btn petbtn" id="petbtn"><img src="assets/cat.ico" width="100%" height="100%" alt="sorry"></button>
 				</div>
+				<h2 class="mur" id="mur"></h2>
 				<div class="statsdiv">
-					<h1 class="stats" id="stats">Complete: 0%</h1>
-					<button disabled="disabled" id="finishbtn" class="finishbtn"><h3 class="finishtextbtn">Finish</h3></button>
+					<div class="stats">
+					</div>
+					<button disabled="disabled" id="finishbtn" class="finishbtn"><h3 class="finishtextbtn">Upgrade</h3></button>
 				</div>
 			</div>
 		</div>

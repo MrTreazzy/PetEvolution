@@ -1,25 +1,20 @@
+/*-------ОБЩИЕ НАСТРОЙКИ----------------------------------------------------------*/
+html, body {
+	height: 100%;
+	width: 100%;
+}
 body {
 	margin: 0;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	background-color: aqua;
+	background-color: rgb(222, 230, 236);
 }
 .section {
 	box-shadow: inset 0 3px 20px black;
-	height: 100vh;
+	height: 100%;
 	display: grid;
 	grid-template-rows: 10% 90%;
 	border-right: 6px groove rgb(110, 110, 110);
-}
-.cliker {
-	background-image: url("assets/bgGold.jpg");
-	grid-template-rows: 10% 86% 4%;
-}
-.pet {
-	background-image: url("assets/bgRed.jpg");
-}
-.shop {
-	background-image: url("assets/bgMoney.jpg");
 }
 .btn {
 	background-color: transparent;
@@ -36,14 +31,11 @@ body {
 	display: grid;
 	justify-content: center;
 	align-content: center;
+	align-items: center;
 	box-shadow: 0 0 10px #230e0b;
 }
-.pettitlediv {
-	grid-template-columns: 1fr 1fr 1fr;
-	justify-items: center;
-}
 @font-face {
-	font-family: Libre Baskerville;
+	font-family: 'Libre Baskerville';
 	src: url("assets/Font/LibreBaskerville-Bold.ttf");
 }
 .title {
@@ -53,258 +45,19 @@ body {
 	color: #d4d4d4;
 	text-shadow: 0 0 2px #e2e2e2;
 }
-.reg {
-	display: grid;
-	justify-content: center;
-	align-items: center;
-}
-.regbtn {
-	border-radius: 20px;
-	width: 100px;
-	height: 50px;
-	background-color: rgb(139, 139, 139);
-	box-shadow: inset 0 0 10px #d3d3d3;
-}
-.regbtn:hover {
-	box-shadow: inset 0 0 10px rgb(27, 27, 27);
-}
-.regh3 {
-	font-size: 17px;
-	margin: 0;
-}
-.errregbtn {
-	width: 0;
-	height: 0;
-}
-.clikerdiv {
-	display: grid;
-	justify-content: center;
-	align-content: center;
-}
-.clikerbtndiv {
-	display: grid;
-	justify-items: center;
-	margin-top: 45px;
-}
-.clicksh3 {
-	margin: 0;
-	font-size: 20px;
-}
-.clicksh3num {
-	margin: 0;
-	font-size: 23px;
-	font-weight: bolder;
-}
-.cpsdiv {
-	display: grid;
-	justify-items: center;
-	margin-top: 10px;
-}
-.coindiv {
-	display: grid;
-  justify-items: center;
-  height: 30px;
-}
-.coinh3 {
-	margin: 5px 0 0 0;
-	font-size: 35px;
-	text-shadow: 0 0 5px #a8a8a8;
-	color: #c5c5c5;
-}
-.petdiv {
-	display: grid;
-  justify-items: center;
-  grid-template-rows: 10% 90%;
-  align-items: center;
-}
-.petbtndiv {
-	margin-bottom: -5px;
-	display: grid;
-	justify-items: center;
-}
-.shopdiv {
-	display: grid;
-	grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-}
-.itemshopbtn {
-	height: 100%;
-	width: 100%;
-}
-.mur {
-	display: grid;
-	justify-items: center;
-	width: 180px;
-	margin-bottom: 0;
-}
-.statsdiv {
-	display: grid;
-	justify-items: center;
-}
+
+/*-----ВЫЛЕЗАЮЩИЕ СТРАНИЦЫ---------------------------------------------------------*/
 .textdiv {
 	display: grid;
 	position: absolute;
 	background-color: rgb(222, 230, 236);
 	height: 100%;
 }
-.secretback {
-	display: grid;
-	position: absolute;
-	background-image: url("assets/kot.jpg");
-	height: 100%;
-}
-.finishtext {
-	margin: 30px 100px 0 60px;
-}
-.finishbtn {
-	width: 140px;
-	height: 40px;
-	border-radius: 20px;
-}
-.finishbtnOpen {
-	width: 140px;
-	height: 40px;
-	border-radius: 20px;
-	background-color: #ff9a26;
-	box-shadow: 0 0 10px rgb(0, 0, 0), inset 0 0 13px #ffd7aa;
-}
-.finishbtnOpen:hover {
-	box-shadow: inset 0 0 13px rgb(27, 27, 27);
-}
-.finishtextbtn {
-	margin: 0;
-	font-size: 20px;
-}
-.finishtextdiv {
-	box-shadow: inset 0 0 30px rgb(46, 46, 46);
-	grid-template-rows: 15% 25% 10% 10% 30% 5% 5%;
-}
-.regtext {
-	margin: 100px 60px 0 100px;
-	height: 60px;
-}
-.gametime {
-	margin: 0;
-	display: grid;
-	justify-items: center;
-	height: 0px;
-}
-.titles {
-	margin: 60px 60px 0 50px;
-}
-.secrettitle {
-	color: aliceblue;
-	margin: 0;
-	height: 30px;
-	display: grid;
-  justify-content: start;
-  align-items: center;
-	width: 150px;
-}
-.secrettitle:hover {
-	background-color: #ffffff;
-	width: 100px;
-}
-.hackshop {
-	background-image: url("assets/javascriptconsoleBackground.jpg");
-}
-.hackdiv {
-	background-image: url("assets/javascriptconsoleBackground.jpg");
-}
-.hackinput {
-	height: 30px;
-	width: 300px;
-}
-.hacksubmitfake {
-	height: 50px;
-	width: 150px;
-	margin-left: 47%;
-}
-.hacksubmit {
-	height: 30px;
-	width: 50px;
-	background-color: black;
-}
-.policeh1 {
-	font-size: 50px;
-	margin-top: 100px;
-}
-.policetext {
-	margin: 50px 60px 0 100px;
-}
-.itembtn {
-	margin: 0;
-	border: 0;
-	display: grid;
-	grid-template-columns: 35% 65%;
-	justify-items: center;
-	align-items: center;
-}
-.itembtnopen {
-	background-image: url("assets/storeTile.jpg");
-}
-.itembtnblock {
-	background-image: url("assets/storeTileBlock.jpg");
-}
-.version {
-	margin: 8px;
-	font-size: 20px;
-	text-shadow: -1px 1px 2px #000;
-	color: rgb(37, 24, 0);
-}
-.iteminfo {
-	display: grid;
-	width: 100%;
-	justify-items: start;
-}
-.itemtitle {
-	margin: 5px;
-}
-.itemprice {
-	margin: 5px;
-}
-.contactush2 {
-	margin: 0 0 0 70px;
-	font-style: italic;
-	font-weight: normal;
-	font-size: larger;
-}
-.contactuslink {
-	text-decoration: none;
-	color: black;
-	padding-left: 5px;
-	font-size: 20px;
-	font-style: normal;
-}
-.contactuslink:hover {
-	background-color: #c5c5c5;
-	border-radius: 5px;
-	padding: 0 6px 0 5px;
-	box-shadow: 0 0 2px #d3d3d3;
-}
-.petnamediv {
-	display: grid;
-	justify-items: center;
-}
-.petname {
-	font-size: 30px;
-	cursor: pointer;
-}
-.petnamecapitalize {
-	text-transform: capitalize;
-}
-.petnameuppercase {
-	text-transform: uppercase;
-}
-.petnamelowercase {
-	text-transform: lowercase;
-}
-.centralpet {
-	margin-top: -86px;
-}
 
+/*-----REGISTRATION SECTION-------------------------------------------------------*/
 * {box-sizing: border-box}
 .container {
-  padding: 80px 45% 0 100px;
+  padding: 5% 45% 0 7%;
 }
 /* Full-width input fields */
 .petform_inputname, .petform_inputpsw {
@@ -345,12 +98,6 @@ hr {
 	text-decoration: underline;
 	cursor: pointer;
 }
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
-  text-align: center;
-}
-
 .petformdiv {
 	box-shadow: inset 0 0 35px rgb(46, 46, 46);
 }
@@ -358,11 +105,13 @@ hr {
 	margin-left: 17px;
 	font-size: 40px;
 	font-family: monospace;
+	height: 47px;
 }
 .petform_title2 {
 	margin-left: 20px;
 	font-size: 20px;
 	font-family: monospace;
+	height: 23px;
 }
 .petform_name {
 	margin-left: 20px;
@@ -381,4 +130,462 @@ hr {
 .textbutton {
 	font-size: 27px;
 	font-family: monospace;
+}
+.regtext {
+	margin: 100px 60px 0 100px;
+	height: 60px;
+}
+.petchoosediv {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	height: 25vh;
+	margin-top: 10px;
+}
+.choose {
+	width: 95%;
+	height: 100%;
+	background-color: transparent;
+	border-radius: 25px;
+	font-size: 30px;
+}
+
+/*-----SETTING SECTION------------------------------------------------------------*/
+.settingdiv {
+	box-shadow: inset 0 0 35px rgb(46, 46, 46);
+}
+.settingcontainer {
+	display: grid;
+	grid-template-rows: 15% 1fr 1fr 10% 10%;
+	padding: 5% 45% 0 7%;
+}
+.settingtitle {
+	font-size: 350%;
+	margin: 4% 0;
+}
+.settinglang {
+	display: inline-flex;
+	margin: 0;
+	align-items: center;
+}
+.langbtn {
+	display: grid;
+	align-items: center;
+	width: 70px;
+	height: 33px;
+	margin-left: 10px;
+	border-radius: 8px;
+}
+.importdiv {
+	display: inline-flex;
+}
+.settingh3 {
+	margin: 0;
+	color: rgb(34, 34, 34);
+	text-shadow: -1px 1px 2px rgb(110, 110, 110);
+}
+.setbtn {
+	border: groove;
+	background-color: #d3d3d3;
+}
+.setbtn:hover {
+	box-shadow: inset 0 0 2rem rgb(165, 165, 165);
+}
+.exportbtn {
+	width: 13vw;
+	height: 23%;
+	margin-left: 5%;
+	border-radius: 15px;
+}
+.settingcontactus {
+	font-style: italic;
+	font-weight: normal;
+	font-size: larger;
+}
+.settingexitbtn {
+	width: 9vw;
+	height: 55%;
+	border-radius: 10px;
+}
+.exportdiv {
+	position: absolute;
+	display: grid;
+	background-color: rgba(0, 0, 0, 0.25);
+	height: 100%;
+	justify-items: center;
+  align-items: center;
+}
+.exportcontainer {
+	width: 50%;
+	height: 50%;
+	background-color: aliceblue;
+	border-radius: 50px;
+	padding: 3%;
+	box-shadow: 0 0 40vh #00000041;
+	display: grid;
+	grid-template-rows: 15% 60% 25%;
+}
+.importinput {
+	width: 100%;
+	height: 90%;
+	font-size: 17px;
+	font-family: 'Courier New', Courier, monospace;
+}
+.exportexit {
+	width: 20%;
+  height: 45%;
+}
+.exporth2div {
+	display: grid;
+	grid-template-rows: 80% 20%;
+}
+.exportexitdiv {
+	display: grid;
+	justify-items: end;
+	align-items: end;
+}
+.datasubmit {
+	width: 25%;
+}
+.exportcopy {
+	width: 15%;
+	height: 80%;
+}
+.settingcontactus {
+	font-style: italic;
+	font-weight: normal;
+	font-size: larger;
+}
+.contactuslink {
+	text-decoration: none;
+	color: black;
+	padding-left: 5px;
+	font-size: 20px;
+	font-style: normal;
+}
+.contactuslink:hover {
+	background-color: #c5c5c5;
+	border-radius: 5px;
+	padding: 0 6px 0 5px;
+	box-shadow: 0 0 2px #d3d3d3;
+}
+
+/*-----FINISH SECTION-------------------------------------------------------------*/
+.titles {
+	margin: 60px 60px 0 50px;
+}
+.finishtext {
+	margin: 30px 100px 0 60px;
+}
+.finishtextdiv {
+	box-shadow: inset 0 0 30px rgb(46, 46, 46);
+	grid-template-rows: 15% 25% 10% 10% 30% 5% 5%;
+}
+.gametime {
+	margin: 0;
+	display: grid;
+	justify-items: center;
+	height: 0px;
+}
+.contactush2 {
+	margin: 0 0 0 70px;
+	font-style: italic;
+	font-weight: normal;
+	font-size: larger;
+}
+.contactuslink {
+	text-decoration: none;
+	color: black;
+	padding-left: 5px;
+	font-size: 20px;
+	font-style: normal;
+}
+.contactuslink:hover {
+	background-color: #c5c5c5;
+	border-radius: 5px;
+	padding: 0 6px 0 5px;
+	box-shadow: 0 0 2px #d3d3d3;
+}
+.secretback {
+	display: grid;
+	position: absolute;
+	background-image: url("assets/kot.jpg");
+	height: 100%;
+}
+.secrettitle {
+	color: aliceblue;
+	margin: 0;
+	height: 30px;
+	display: grid;
+  justify-content: start;
+  align-items: center;
+	width: 150px;
+}
+.secrettitle:hover {
+	background-color: #ffffff;
+	width: 100px;
+}
+
+/*-----HACK SECTION-------------------------------------------------------------------*/
+.hackshop {
+	background-image: url("assets/javascriptconsoleBackground.jpg");
+}
+.hackdiv {
+	background-image: url("assets/javascriptconsoleBackground.jpg");
+}
+.hackinput {
+	height: 30px;
+	width: 300px;
+}
+.hacksubmitfake {
+	height: 50px;
+	width: 150px;
+	margin-left: 47%;
+}
+.hacksubmit {
+	height: 30px;
+	width: 50px;
+	background-color: black;
+}
+.policeh1 {
+	font-size: 50px;
+	margin-top: 100px;
+}
+.policetext {
+	margin: 50px 60px 0 100px;
+}
+
+/*------CLICKER SECTION-----------------------------------------------------------*/
+.cliker {
+	background-image: url("assets/bgGold.jpg");
+	grid-template-rows: 10% 86% 4%;
+}
+.clikerdiv {
+	display: grid;
+	justify-content: center;
+	align-content: center;
+}
+.clikerbtndiv {
+	display: grid;
+	justify-items: center;
+	margin-top: 96px;
+}
+.clikerbtn {
+	background-color: #0000000a;
+}
+.clicksh3 {
+	margin: 0;
+	font-size: 20px;
+}
+.clicksh3num {
+	margin: 0;
+	font-size: 23px;
+	font-weight: bolder;
+}
+.cpsdiv {
+	display: grid;
+	justify-items: center;
+	margin-top: 10px;
+}
+.version {
+	margin: 8px;
+	font-size: 20px;
+	text-shadow: -1px 1px 2px #000;
+	color: rgb(37, 24, 0);
+}
+.petdivblock {
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+.minipetdiv {
+	position: absolute;
+	background-color: transparent;
+	width: 0;
+	height: 0;
+}
+.petimg {
+	width: 50px;
+	aspect-ratio: 1 / 1;
+	margin: 50vh 0 0 50vw;
+}
+
+/*------PET SECTION------------------------------------------------------------*/
+.pet {
+	background-image: url("assets/bgRed.jpg");
+}
+.pettitlediv {
+	grid-template-columns: 1fr 1fr 1fr;
+	justify-items: center;
+}
+.reg {
+	display: grid;
+	justify-content: center;
+	align-items: center;
+}
+.settingbtn {
+	border-radius: 20px;
+	width: 100px;
+	height: 50px;
+	background-color: rgb(139, 139, 139);
+	box-shadow: inset 0 0 10px #d3d3d3;
+}
+.settingbtn:hover {
+	box-shadow: inset 0 0 10px rgb(27, 27, 27);
+}
+.settingh3 {
+	font-size: 17px;
+	margin: 0;
+}
+.menu {
+	display: grid;
+	grid-template-columns: 70% 30%;
+	width: 100%;
+	height: 100%;
+}
+.petstats {
+	border-bottom: 4px groove #c5c5c5;
+  border-left: 4px groove aliceblue;
+  display: grid;
+	align-items: center;
+	padding: 4px 0;
+	border-radius: 10px;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+.petstat {
+	display: inline-flex;
+  justify-content: space-between;
+	align-items: center;
+	padding: 0 8px;
+}
+.statprog {
+	width: 80%;
+}
+.stath3	{
+	font-size: 20px;
+	margin: 0;
+}
+.coindiv {
+	display: grid;
+  justify-items: center;
+	align-items: center;
+  height: 100%;
+	width: 100%;
+}
+.coinh3 {
+	margin: 5px 0 0 40%;
+	font-size: 35px;
+	text-shadow: 0 0 5px #a8a8a8;
+	color: #c5c5c5;
+}
+.petdiv {
+	display: grid;
+  justify-items: center;
+  grid-template-rows: 10% 90%;
+  align-items: center;
+}
+.petbtndiv {
+	margin-bottom: -5px;
+	display: grid;
+	justify-items: center;
+}
+.petbtn {
+	border: none;
+}
+.petnamediv {
+	display: grid;
+	justify-items: center;
+}
+.petname {
+	font-size: 30px;
+	cursor: pointer;
+}
+.petnamecapitalize {
+	text-transform: capitalize;
+}
+.petnameuppercase {
+	text-transform: uppercase;
+}
+.petnamelowercase {
+	text-transform: lowercase;
+}
+.centralpet {
+	margin-top: -65px;
+}
+.mur {
+	display: grid;
+	justify-items: center;
+	width: 100%;
+	height: 27px;
+}
+.finishbtn {
+	width: 140px;
+	height: 40px;
+	border-radius: 20px;
+}
+.finishbtnOpen {
+	width: 140px;
+	height: 40px;
+	border-radius: 20px;
+	background-color: #ff9a26;
+	box-shadow: 0 0 10px rgb(0, 0, 0), inset 0 0 13px #ffd7aa;
+}
+.finishbtnOpen:hover {
+	box-shadow: inset 0 0 13px rgb(27, 27, 27);
+}
+.finishtextbtn {
+	margin: 0;
+	font-size: 20px;
+}
+.statsdiv {
+	display: grid;
+	justify-items: center;
+}
+
+/*------SHOP SECTION-------------------------------------------------------*/
+.shop {
+	background-image: url("assets/bgMoney.jpg");
+}
+.shopdiv {
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+.itemshopbtn {
+	height: 100%;
+	width: 100%;
+}
+.itembtn {
+	margin: 0;
+	border: 0;
+	display: grid;
+	grid-template-columns: 35% 65%;
+	justify-items: center;
+	align-items: center;
+}
+.itembtnopen {
+	background-image: url("assets/storeTile.jpg");
+}
+.itembtnblock {
+	background-image: url("assets/storeTileBlock.jpg");
+}
+.iteminfo {
+	display: grid;
+	width: 100%;
+	justify-items: start;
+}
+.itemtitle {
+	margin: 5px;
+}
+.itemprice {
+	margin: 5px;
+}
+
+/*---PHONE VERSION----------------------------------------*/
+@media (max-width: 1200px) {
+	.container {
+		padding: 10% 10% 0 10%;
+	}
+	/* .textdiv {
+		width: 100vw;
+		height: 100vh;
+	} */
 }
