@@ -956,6 +956,8 @@ function item5open(coin) {
 		if (coin >= 50) {
 			coin = coin - 50
 			coinvalue.textContent = "Coin: " + coin
+			stathunger.value = stathunger.value + 50
+			stathappy.value = stathappy.value + 25
 			BlockShop(coin);
 		}
 	}
