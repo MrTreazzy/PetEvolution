@@ -4,8 +4,6 @@ let coinvalue = document.getElementById("coin")
 
 let petbtn = document.getElementById("petbtn")
 let mur = document.getElementById("mur")
-
-let finish = document.getElementById("finishbtn")
 let asec = document.getElementById("secretlink")
 
 let stathealth = document.getElementById('stathealth');
@@ -850,15 +848,12 @@ let secrettitle = document.getElementById("secrettitle")
 let finishtextdiv = document.getElementById("finishtextdiv")
 let contactus = document.getElementById('contactus');
 
-finish.onclick = () => {
-	FinishEnding();
-}
 function FinishEnding() {
 	intervalstop();
 	finishtextdiv.style.width = "100%"
 
 	titles.setAttribute("class", "titles")
-	titles.textContent = "Pet Evolution v0.7 (Adaptive Update) | Made by MrTreazzy"
+	titles.textContent = "Pet Evolution v0.7 | Made by MrTreazzy"
 
 	finishtext1.setAttribute("class", "finishtext")
 	finishtext1.textContent = "Click here for Congratulations!"
