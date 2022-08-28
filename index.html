@@ -3,7 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<!-- <meta name="viewport" content="height=device-height, initial-scale=1.0"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Pet evolution | Made by MrTreazzy</title>
 	<link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
@@ -23,19 +22,35 @@
 	
 				<label for="email"><b id="petform_name" class="petform_name">Имя питомца</b></label>
 				<input type="text" placeholder="Введите имечко..." name="name" id="petform_inputname" class="petform_inputname"	required />
-				<!-- <label for="psw"><b id="petform_psw" class="petform_psw">Пароль</b></label>
-				<input type="password" placeholder="Введите пароль не менее 6 символов..." name="psw" id="petform_inputpsw" minlength="6" class="petform_inputpsw" required> -->
 				<br>
-				<b id="petform_skin" class="petform_name">Выбери питомца</b>
+				<b id="petform_skin" class="petform_name">Выбери питомца (Наведи мышку для характеристик)</b>
 				<div class="petchoosediv" id="petchoosediv">
-					<button class="choose cat" id="choosecat"><img src="assets/cat.ico" alt="sorry" width="85%" height="90%"></button>
-					<button class="choose dog" id="choosedog"><img src="assets/dog.ico" alt="sorry" width="85%" height="90%"></button>
-					<button class="choose dragon" id="choosedragon"><img src="assets/dragon.ico" alt="sorry" width="85%" height="90%"></button>
+					<button class="choose cat" id="choosecat">
+						<img src="assets/cat.ico" id="chooseimgcat" alt="sorry" width="85%" height="90%">
+					</button>
+					<button class="choose dog" id="choosedog">
+						<img src="assets/dog.ico" id="chooseimgdog" alt="sorry" width="85%" height="90%">
+					</button>
+					<button class="choose dragon" id="choosedragon">
+						<img src="assets/dragon.ico" id="chooseimgdragon" alt="sorry" width="85%" height="90%">
+					</button>
 				</div>
 				<br>
 				<p id="confirm_rules" class="confirm_rules">Создавая аккаунт Вы соглашаетесь с нашими <a id="a_confirm_rules" class="a_confirm_rules">Правилами конфеденциальности</a>.</p>
 			</div>
 			<button type="submit" class="registerbtn" id="petform_confirm"><span class="textbutton">Выдать питомца!</span></button>
+		</div>
+	</div>
+	<div class="inventorydiv" id="inventorydiv">
+		<div id="invcontainer">
+			<div class="invtitlediv">
+				<h1 id="invtitle" style="color: rgb(106, 106, 106);"></h1>
+				<h1 id="invtip" class="invtip"></h1>
+			</div>
+			<div id="inventory" class="inventory">
+				
+			</div>
+		</div>
 		</div>
 	</div>
 	<div class="textdiv settingdiv" id="settingdiv">
@@ -64,12 +79,8 @@
 		<h2 id="contactus"></h2>
 		<h2 id="secrettitle"></h2>
 	</div>
-	<div class="textdiv errregdiv" id="errregdiv">
-		<h1 id="regtext"></h1>
-	</div>
 	<div class="textdiv hackdiv" id="hackdiv">
 		<h1 id="hackcoinh3"></h1>
-		<h1 id="hackprogressh3"></h1>
 		<br id="br1">
 		<br id="br2">
 	</div>
@@ -78,8 +89,10 @@
 		<h1 id="policetext2"></h1>
 	</div>
 	<div class="section cliker">
-		<div class="titlediv">
-			<h1 class="title">Clicker <a id="secretlink"></a></h1>
+		<div class="titlediv clickertitlediv">
+			<br>
+			<h1 class="title">Clicker</h1>
+			<a class="secretlink" id="secretlink"></a>
 		</div>
 		<div class="clikerdiv">
 			<div class="centralbtn clikerbtndiv">
@@ -95,16 +108,25 @@
 	</div>
 	<div class="section pet">
 		<div class="titlediv pettitlediv">
-			<br>
+			<div class="profilediv">
+				<button class="inventorybtn" id="inventorybtn">Inventory</button>
+			</div>
 			<h1 class="title">Your Pet</h1>
 			<div class="reg">
-				<button class="settingbtn" id="settingbtn"><h4 class="settingh3">Settings</h4></button>
+				<button class="settingbtn" id="settingbtn">Settings</button>
 			</div>
 		</div>
 		<div class="petdiv">
 			<div class="menu">
-				<div class="coindiv">
-					<h3 class="coinh3" id="coin">Coin: 0</h3>
+				<div class="timediv">
+					<h4 id="timeh4" class="timeh4">00:00</h4>
+				</div>
+				<div class="moneydiv">
+					<br> <!--Здесь должна быть еще одна валюта по идеи-->
+					<div class="coindiv">
+						<img src="assets/coinico.ico" width="20px" height="20px" alt="">
+						<h5 class="coinh5" id="coin">0</h5>
+					</div>
 				</div>
 				<div class="petstats">
 					<div class="petstat health">
@@ -129,6 +151,11 @@
 					<button class="btn petbtn" id="petbtn"><img src="assets/cat.ico" width="100%" height="100%" alt="sorry"></button>
 				</div>
 				<h2 class="mur" id="mur"></h2>
+				<div class="statsdiv">
+					<div class="stats">
+					</div>
+					<button disabled="disabled" id="finishbtn" class="finishbtn"><h3 id="finishtextbtn" class="finishtextbtn">Upgrade</h3></button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -137,11 +164,11 @@
 			<h1 class="title">Shop</h1>
 		</div>
 		<div class="shopdiv">
-			<button class="itembtn itembtnblock" id="item1"><img id="itemico1" src="assets/poisonBlock.ico" height="64px" width="64px" alt="oh"><div class="iteminfo"><h1 class="itemtitle">ITEM1</h1><h2 class="itemprice">10 ©</h2></div></button>
-			<button class="itembtn itembtnblock" id="item2"><img id="itemico2" src="assets/poisonBlock.ico" height="64px" width="64px" alt="oh"><div class="iteminfo"><h1 class="itemtitle">ITEM2</h1><h2 class="itemprice">20 ©</h2></div></button>
-			<button class="itembtn itembtnblock" id="item3"><img id="itemico3" src="assets/poisonBlock.ico" height="64px" width="64px" alt="oh"><div class="iteminfo"><h1 class="itemtitle">ITEM3</h1><h2 class="itemprice">30 ©</h2></div></button>
-			<button class="itembtn itembtnblock" id="item4"><img id="itemico4" src="assets/poisonBlock.ico" height="64px" width="64px" alt="oh"><div class="iteminfo"><h1 class="itemtitle">ITEM4</h1><h2 class="itemprice">40 ©</h2></div></button>
-			<button class="itembtn itembtnblock" id="item5"><img id="itemico5" src="assets/poisonBlock.ico" height="64px" width="64px" alt="oh"><div class="iteminfo"><h1 class="itemtitle">ITEM5</h1><h2 class="itemprice">50 ©</h2></div></button>
+			<button class="itembtn itembtnblock" id="item1"><img id="itemico1" src="assets/poisonBlock.ico" height="64px" width="64px" alt="oh"><div class="iteminfo"><h1 class="itemtitle">Микрохавчик</h1><h2 class="itemprice">10 ©</h2></div></button>
+			<button class="itembtn itembtnblock" id="item2"><img id="itemico2" src="assets/poisonBlock.ico" height="64px" width="64px" alt="oh"><div class="iteminfo"><h1 class="itemtitle">На зубок</h1><h2 class="itemprice">20 ©</h2></div></button>
+			<button class="itembtn itembtnblock" id="item3"><img id="itemico3" src="assets/poisonBlock.ico" height="64px" width="64px" alt="oh"><div class="iteminfo"><h1 class="itemtitle">Перекус</h1><h2 class="itemprice">30 ©</h2></div></button>
+			<button class="itembtn itembtnblock" id="item4"><img id="itemico4" src="assets/poisonBlock.ico" height="64px" width="64px" alt="oh"><div class="iteminfo"><h1 class="itemtitle">С днем обеда!</h1><h2 class="itemprice">40 ©</h2></div></button>
+			<button class="itembtn itembtnblock" id="item5"><img id="itemico5" src="assets/poisonBlock.ico" height="64px" width="64px" alt="oh"><div class="iteminfo"><h1 class="itemtitle">Обожрись!</h1><h2 class="itemprice">50 ©</h2></div></button>
 		</div>
 	</div>
 </body>

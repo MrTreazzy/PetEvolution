@@ -4,6 +4,19 @@ let coinvalue = document.getElementById("coin")
 
 let petbtn = document.getElementById("petbtn")
 let mur = document.getElementById("mur")
+
+let finish = document.getElementById("finishbtn")
+
+let finishtextbtn = document.getElementById('finishtextbtn');
+finishtextbtn.onmouseover = () => {
+	finishtextbtn.textContent = "Пока недоступно..."
+	finishtextbtn.style.fontSize = "14px"
+}
+finishtextbtn.onmouseout = () => {
+	finishtextbtn.textContent = "Upgrade"
+	finishtextbtn.style.fontSize = "20px"
+}
+
 let asec = document.getElementById("secretlink")
 
 let stathealth = document.getElementById('stathealth');
@@ -18,6 +31,7 @@ let petform_title2 = document.getElementById('petform_title2');
 let petform_name = document.getElementById('petform_name');
 let petform_inputname = document.getElementById('petform_inputname');
 let petform_skin = document.getElementById('petform_skin');
+let petchoosediv = document.getElementById('petchoosediv');
 let confirm_rules = document.getElementById('confirm_rules');
 let a_confirm_rules = document.getElementById('a_confirm_rules');
 let petform_confirm = document.getElementById('petform_confirm');
@@ -194,40 +208,201 @@ let step = null
 let hunger = null
 let happy = null
 let regen = null
+
+let damagecat = null
+let damagedog = null
+let damagedragon = null
+function damagefunc() {
+	regenfuncstop();
+		if (choosepet == "cat" && damagecat == null) {
+			damagecat = setInterval(() => {
+				stathealth.value = stathealth.value - 1
+			}, 960)
+		}
+		if (choosepet == "dog" && damagedog == null) {
+			damagedog = setInterval(() => {
+				stathealth.value = stathealth.value - 1
+			}, 1240)
+		}
+		if (choosepet == "dragon" && damagedragon == null) {
+			damagedragon = setInterval(() => {
+				stathealth.value = stathealth.value - 1
+			}, 1520)
+		}
+}
+function damagefuncstop() {
+	if (choosepet == "cat") {
+		clearInterval(damagecat)
+		damagecat = null
+	}
+	if (choosepet == "dog") {
+		clearInterval(damagedog)
+		damagedog = null
+	}
+	if (choosepet == "dragon") {
+		clearInterval(damagedragon)
+		damagedragon = null
+	}
+}
+
+let regencat = null
+let regendog = null
+let regendragon = null
+function regenfunc() {
+	damagefuncstop();
+	if (choosepet == "cat" && regencat == null) {
+		regencat = setInterval(() => {
+			stathealth.value = stathealth.value + 1
+		}, 1400)
+	}
+	if (choosepet == "dog" && regendog == null) {
+		regendog = setInterval(() => {
+			stathealth.value = stathealth.value + 1
+		}, 1100)
+	}
+	if (choosepet == "dragon" && regendragon == null) {
+		regendragon = setInterval(() => {
+			stathealth.value = stathealth.value + 1
+		}, 800)
+	}
+}
+function regenfuncstop() {
+	if (choosepet == "cat") {
+		clearInterval(regencat)
+		regencat = null
+	}
+	if (choosepet == "dog") {
+		clearInterval(regendog)
+		regendog = null
+	}
+	if (choosepet == "dragon") {
+		clearInterval(regendragon)
+		regendragon = null
+	}
+}
+
+let timeh4 = document.getElementById('timeh4');
+let min = 0
+let minstr, secstr = ""
+
 function intervalstats() {
 	intsec = setInterval(() => {
 		sec = sec + 1
+		if (sec >= 60) {
+			min += 1
+			sec = 0
+		}
+		if (min < 10) {
+			minstr = "0" + min
+		} else {
+			minstr = min
+		}
+		if (sec < 10) {
+			secstr = "0" + sec
+		} else {
+			secstr = sec
+		}
+		timeh4.textContent = minstr + ":" + secstr
 	}, 1000)
-	hunger = setInterval(() => { //hunger
-		if (stathunger.value <= 0) {
-			if (stathealth.value > 0) {
-				stathealth.value = stathealth.value - 1
+	if (choosepet == "cat") {
+		hunger = setInterval(() => { //hunger cat
+			if (stathunger.value <= 0) {
+				if (stathealth.value > 0) {
+					damagefunc();
+				} else {
+					FinishEnding();
+				}
 			} else {
-				FinishEnding();
+				stathunger.value = stathunger.value - statstep
 			}
-		} else {
-			stathunger.value = stathunger.value - statstep
-		}
-	}, 700);
-	happy = setInterval(() => {
-		if (stathappy.value <= 0) { //happy
-			if (stathealth.value > 0) {
-				stathealth.value = stathealth.value - 1
+		}, 1050); // default: hunger=700, happy=1300, regen=1200
+		happy = setInterval(() => {
+			if (stathappy.value <= 0) { //happy cat
+				if (stathealth.value > 0) {
+					damagefunc();
+				} else {
+					FinishEnding();
+				}
 			} else {
-				FinishEnding();
+				stathappy.value = stathappy.value - statstep
 			}
-		} else {
-			stathappy.value = stathappy.value - statstep
-		}
-	}, 1300);
-	regen = setInterval(() => { //regeneration
-		if (stathunger.value > 0 && stathappy.value > 0) {
-			if (stathealth.value >= 100) {
+		}, 1500);
+		regen = setInterval(() => { //regeneration cat
+			if (stathunger.value > 0 && stathappy.value > 0) {
+				if (stathealth.value >= 100) {
+					regenfuncstop();
+				} else {
+					regenfunc();
+				}
+			}
+		}, 100);
+	} else if (choosepet == "dog") {
+		hunger = setInterval(() => { //hunger dog
+			if (stathunger.value <= 0) {
+				if (stathealth.value > 0) {
+					damagefunc();
+				} else {
+					FinishEnding();
+				}
 			} else {
-				stathealth.value = stathealth.value + 1
+				stathunger.value = stathunger.value - statstep
 			}
-		}
-	}, 1200);
+		}, 600);
+		happy = setInterval(() => {
+			if (stathappy.value <= 0) { //happy dog
+				if (stathealth.value > 0) {
+					damagefunc();
+				} else {
+					FinishEnding();
+				}
+			} else {
+				stathappy.value = stathappy.value - statstep
+			}
+		}, 1200);
+		regen = setInterval(() => { //regeneration dog
+			if (stathunger.value > 0 && stathappy.value > 0) {
+				if (stathealth.value >= 100) {
+					regenfuncstop();
+				} else {
+					regenfunc();
+				}
+			}
+		}, 100);
+	} else if (choosepet == "dragon") {
+		hunger = setInterval(() => { //hunger dragon
+			if (stathunger.value <= 0) {
+				if (stathealth.value > 0) {
+					damagefunc();
+					damageticket = 1
+				} else {
+					FinishEnding();
+				}
+			} else {
+				stathunger.value = stathunger.value - statstep
+			}
+		}, 450);
+		happy = setInterval(() => {
+			if (stathappy.value <= 0) { //happy dragon
+				if (stathealth.value > 0) {
+					damagefunc();
+				} else {
+					FinishEnding();
+				}
+			} else {
+				stathappy.value = stathappy.value - statstep
+			}
+		}, 900);
+		regen = setInterval(() => { //regeneration dragon
+			if (stathunger.value > 0 && stathappy.value > 0) {
+				if (stathealth.value >= 100) {
+					regenfuncstop();
+				} else {
+					regenfunc();
+				}
+			}
+		}, 100);
+	}
+	
 	step = setInterval(() => {
 		statstep = statstep + 1
 	}, 60000);
@@ -248,29 +423,35 @@ confirm_rules.after(confirm_rules2);
 let choosecat = document.getElementById('choosecat');
 let choosedog = document.getElementById('choosedog');
 let choosedragon = document.getElementById('choosedragon');
+
+let chooseimgcat = document.getElementById('chooseimgcat');
+let chooseimgdog = document.getElementById('chooseimgdog');
+let chooseimgdragon = document.getElementById('chooseimgdragon');
+
 let chooseticket = 0
+let choosepet = null
 chooseoveron();
 
 function chooseoveron() {
-	choosecat.onmouseover = () => {
-		choosecat.textContent = "CAT"
+	chooseimgcat.onmouseover = () => {
+		chooseimgcat.src = "assets/catchoose210x210.jpg"
 	}
-	choosecat.onmouseout = () => {
-		choosecat.innerHTML = "<img src='assets/cat.ico' alt='sorry' width='85%' height='90%'>"
-	}
-	
-	choosedog.onmouseover = () => {
-		choosedog.textContent = "DOG"
-	}
-	choosedog.onmouseout = () => {
-		choosedog.innerHTML = "<img src='assets/dog.ico' alt='sorry' width='85%' height='90%'>"
+	chooseimgcat.onmouseout = () => {
+		chooseimgcat.src = "assets/cat.ico"
 	}
 	
-	choosedragon.onmouseover = () => {
-		choosedragon.textContent = "DRAGON"
+	chooseimgdog.onmouseover = () => {
+		chooseimgdog.src = "assets/dogchoose210x210.jpg"
 	}
-	choosedragon.onmouseout = () => {
-		choosedragon.innerHTML = "<img src='assets/dragon.ico' alt='sorry' width='85%' height='90%'>"
+	chooseimgdog.onmouseout = () => {
+		chooseimgdog.src = "assets/dog.ico"
+	}
+	
+	chooseimgdragon.onmouseover = () => {
+		chooseimgdragon.src = "assets/dragonchoose210x210.jpg"
+	}
+	chooseimgdragon.onmouseout = () => {
+		chooseimgdragon.src = "assets/dragon.ico"
 	}
 }
 function chooseoveroff() {
@@ -290,6 +471,7 @@ choosecat.onclick = () => {
 	choosedog.onclick = () => {}
 	choosedragon.onclick = () => {}
 	petbtn.innerHTML = "<img src='assets/cat.ico' width='100%' height='100%' alt='sorry'>"
+	choosepet = "cat"
 	chooseoveroff();
 }
 choosedog.onclick = () => {
@@ -299,6 +481,7 @@ choosedog.onclick = () => {
 	choosecat.onclick = () => {}
 	choosedragon.onclick = () => {}
 	petbtn.innerHTML = "<img src='assets/dog.ico' width='100%' height='100%' alt='sorry'>"
+	choosepet = "dog"
 	chooseoveroff();
 }
 choosedragon.onclick = () => {
@@ -308,6 +491,7 @@ choosedragon.onclick = () => {
 	choosedog.onclick = () => {}
 	choosecat.onclick = () => {}
 	petbtn.innerHTML = "<img src='assets/dragon.ico' width='100%' height='100%' alt='sorry'>"
+	choosepet = "dragon"
 	chooseoveroff();
 }
 
@@ -319,6 +503,9 @@ a_confirm_rules.onclick = () => {
 		confirm_rules2.textContent = "Второе правило сайта Pet Evolution: пункт 1 бредит, нужно это все делать наоборот."
 	}, 3000)
 }
+
+let rand1 = Math.random()
+let randtext1 = ""
 petform_confirm.onclick = () => {
 	if (petform_inputname.value == "" || chooseticket == 0) {
 		if (petform_inputname.value == "") {
@@ -334,30 +521,97 @@ petform_confirm.onclick = () => {
 	} else {
 		let name = petform_inputname.value
 		let user = [name]
-		petform_title.textContent = "Пасибочки! :3"
-		petform_title2.textContent = "Сейчас загрузим твою игру...)"
-		setTimeout(() => {
-			petformdiv.style.width = "0"
-			container.style.width = "0"
-			petform_title.textContent = ""
-			petform_title2.textContent = ""
-			container.removeAttribute("class")
-			console.log(user);
-			setTimeout(() => {
-				intervalstats();
-			}, 3000)
-		}, 3000)
-		petform_name.textContent = ""
-		petform_inputname.remove();
-		petform_skin.remove();
-		choosecat.remove();
-		choosedog.remove();
-		choosedragon.remove();
-		confirm_rules.remove();
-		confirm_rules2.remove();
-		petform_confirm.remove();
-		petname.textContent = name
+		welcomewithload();
+		console.log(user);
 	}
+}
+let welcomeh1 = null
+function welcomewithload() {
+	petform_title.textContent = "Пасибочки! :3"
+	petform_title2.textContent = "Сейчас загрузим твою игру...)"
+	petform_name.remove();
+	petform_inputname.remove();
+	petform_skin.remove();
+	choosecat.remove();
+	choosedog.remove();
+	choosedragon.remove();
+	confirm_rules.remove();
+	confirm_rules2.remove();
+	petform_confirm.remove();
+	petchoosediv.remove();
+		
+	setTimeout(() => {
+		petformdiv.setAttribute("class", "textdiv petformdiv welcomediv")
+	}, 3000);
+	setTimeout(() => {
+		petformdiv.style.width = "0"
+	}, 9000);
+	setTimeout(() => {
+		petform_title.remove();
+		petform_title2.remove();
+		container.remove();
+
+		rand1 = Math.random()
+		if (rand1 < 0.7) {
+			randtext1 = "welcomeh1"
+		} else {
+			randtext1 = "welcomeh1two"
+		}
+		petformdiv.setAttribute("class", "textdiv welcomedivtwo welcomediv")
+		welcomeh1 = document.createElement("h1")
+		welcomeh1.className = randtext1
+		welcomeh1.textContent = "welcome"
+		petformdiv.append(welcomeh1)
+
+		setTimeout(() => {
+			welcomeh1.remove();
+		}, 3500);
+		setTimeout(() => {
+			intervalstats();
+		}, 6500)
+	}, 5000)
+}
+function welcomewithoutload() {
+	petform_name.remove();
+	petform_inputname.remove();
+	petform_skin.remove();
+	choosecat.remove();
+	choosedog.remove();
+	choosedragon.remove();
+	confirm_rules.remove();
+	confirm_rules2.remove();
+	petform_confirm.remove();
+	petchoosediv.remove();
+	
+	petname.textContent = name
+	petformdiv.setAttribute("class", "textdiv petformdiv welcomediv")
+	setTimeout(() => {
+		petformdiv.style.width = "0"
+	}, 6000);
+	setTimeout(() => {
+		petform_title.remove();
+		petform_title2.remove();
+		container.remove();
+
+		rand1 = Math.random()
+		if (rand1 < 0.7) {
+			randtext1 = "welcomeh1"
+		} else {
+			randtext1 = "welcomeh1two"
+		}
+		petformdiv.setAttribute("class", "textdiv welcomedivtwo welcomediv")
+		welcomeh1 = document.createElement("h1")
+		welcomeh1.className = randtext1
+		welcomeh1.textContent = "welcome"
+		petformdiv.append(welcomeh1)
+
+		setTimeout(() => {
+			welcomeh1.remove();
+		}, 3500);
+		setTimeout(() => {
+			intervalstats();
+		}, 6500)
+	}, 1300)
 }
 
 //------SETTING SECTION---------------------------------------------------------------------------------------
@@ -375,32 +629,87 @@ let exporth2div = document.getElementById('export');
 
 let notsave = ""
 let save = ""
+let lang = "eng"
 settingbtn.onclick = () => {
 	intervalstop();
 	settingdiv.style.width = "100%"
 	settingcontainer.setAttribute("class", "settingcontainer")
+	settinglang.setAttribute("class", "settinglang")
 	settingtitle.textContent = "Settings"
 	settinglang.textContent = "Language: "
-	settinglang.setAttribute("class", "settinglang")
 
 	let langbtn = document.createElement("button")
 	langbtn.className = "setbtn langbtn"
-	langbtn.innerHTML = "<h3 style='margin: 0;'>ENG</h3>"
+	langbtn.innerHTML = "<h3>ENG</h3>"
 	settinglang.append(langbtn)
+
+	langbtn.onclick = () => {
+		if (lang == "eng") {
+			ruslang();
+			lang = "rus"
+		} else if (lang == "rus") {
+			englang();
+			lang = "eng"
+		}
+	}
+	function ruslang() {
+		langbtn.innerHTML = "<h3>RUS</h3>"
+		settingtitle.textContent = "Настройки"
+		settinglang.textContent = "Язык: "
+		settinglang.append(langbtn)
+		exportbtn.innerHTML = "<h2>Экспорт данных</h2>"
+		importbtn.innerHTML = "<h2>Импорт данных</h2>"
+		settingexitbtn.innerHTML = "<h2>Выход</h2>"
+		settingcontactus.innerHTML = "Связаться со Мной: <a class='contactuslink' href='http://vk.com/mrtreazzy' target='_blank'>VK</a>"
+	}
+	function englang() {
+		langbtn.innerHTML = "<h3>ENG</h3>"
+		settingtitle.textContent = "Settings"
+		settinglang.textContent = "Language: "
+		settinglang.append(langbtn)
+		exportbtn.innerHTML = "<h2>Export data</h2>"
+		importbtn.innerHTML = "<h2>Import data</h2>"
+		settingexitbtn.innerHTML = "<h2>Exit</h2>"
+		settingcontactus.innerHTML = "Contact Me: <a class='contactuslink' href='http://vk.com/mrtreazzy' target='_blank'>VK</a>"
+	}
 	
 	let exportbtn = document.createElement("button")
 	exportbtn.className = "setbtn exportbtn"
-	exportbtn.innerHTML = "<h2 style='margin: 0;'>Export data</h2>"
+	exportbtn.innerHTML = "<h2>Export data</h2>"
 	importdiv.append(exportbtn)
 
 	let importbtn = document.createElement("button")
 	importbtn.className = "setbtn exportbtn"
-	importbtn.innerHTML = "<h2 style='margin: 0;'>Import data</h2>"
+	importbtn.innerHTML = "<h2>Import data</h2>"
 	importdiv.append(importbtn)
+
+	importmouseover();
+	function importmouseover() {
+		exportbtn.onmouseover = () => {
+			exportbtn.innerHTML = "<h2 style='font-size: 17px;'>Пока недоступно...</h2>"
+		}
+		exportbtn.onmouseout = () => {
+			if (lang == "eng") {
+				exportbtn.innerHTML = "<h2>Export data</h2>"
+			} else if (lang == "rus") {
+				exportbtn.innerHTML = "<h2>Экспорт данных</h2>"
+			}
+		}
+		importbtn.onmouseover = () => {
+			importbtn.innerHTML = "<h2 style='font-size: 17px;'>Пока недоступно...</h2>"
+		}
+		importbtn.onmouseout = () => {
+			if (lang == "eng") {
+				importbtn.innerHTML = "<h2>Import data</h2>"
+			} else if (lang == "rus") {
+				importbtn.innerHTML = "<h2>Импорт данных</h2>"
+			}
+		}
+	}
 
 	let settingexitbtn = document.createElement("button")
 	settingexitbtn.className = "setbtn settingexitbtn"
-	settingexitbtn.innerHTML = "<h2 style='margin: 0;'>Exit</h2>"
+	settingexitbtn.innerHTML = "<h2>Exit</h2>"
 	importdiv.after(settingexitbtn)
 
 	settingcontactus.setAttribute("class", "settingcontactus")
@@ -414,7 +723,11 @@ settingbtn.onclick = () => {
 		exportcontainer.setAttribute("class", "exportcontainer")
 		exporth2div.setAttribute("class", "exporth2div")
 		exportexitdiv.setAttribute("class", "exportexitdiv")
-		exporttitle.textContent = "Export data: "
+		if (lang == "eng") {
+			exporttitle.textContent = "Export data: "
+		} else if (lang == "rus") {
+			exporttitle.textContent = "Экспорт данных: "
+		}
 
 		let exporth2 = document.createElement("h2")
 		exporth2.className = "exporth2"
@@ -422,19 +735,31 @@ settingbtn.onclick = () => {
 		exporth2div.prepend(exporth2)
 
 		let exportcopy = document.createElement("button")
-		exportcopy.className = "exportcopy"
-		exportcopy.innerHTML = "<h2 style='margin: 0;'>Copy</h2>"
+		exportcopy.className = "setbtn exportcopy"
+		if (lang == "eng") {
+			exportcopy.innerHTML = "<h2>Copy</h2>"
+		} else if (lang == "rus") {
+			exportcopy.innerHTML = "<h2>Копировать</h2>"
+		}
 		exporth2div.append(exportcopy)
 
 		let exportexit = document.createElement("button")
-		exportexit.className = "exportexit"
-		exportexit.innerHTML = "<h2 style='margin: 0;'>Exit</h2>"
+		exportexit.className = "setbtn exportexit"
+		if (lang == "eng") {
+			exportexit.innerHTML = "<h2>Exit</h2>"
+		} else if (lang == "rus") {
+			exportexit.innerHTML = "<h2>Выход</h2>"
+		}
 		exportexitdiv.append(exportexit)
 
 		exportcopy.onclick = () => {
 			setTimeout(async()=>
 				await window.navigator.clipboard.writeText(save), 10)
-			exportcopy.innerHTML = "<h2 style='margin: 0;'>Copyed!</h2>"
+			if (lang == "eng") {
+				exportcopy.innerHTML = "<h2>Copyed!</h2>"
+			} else if (lang == "rus") {
+				exportcopy.innerHTML = "<h2>Скопировано!</h2>"
+			}
 		}
 
 		exportexit.onclick = () => {
@@ -454,22 +779,38 @@ settingbtn.onclick = () => {
 		exportcontainer.setAttribute("class", "exportcontainer")
 		exporth2div.setAttribute("class", "exporth2div")
 		exportexitdiv.setAttribute("class", "exportexitdiv")
-		exporttitle.textContent = "Import data: "
+		if (lang == "eng") {
+			exporttitle.textContent = "Import data: "
+		} else if (lang == "rus") {
+			exporttitle.textContent = "Импорт данных: "
+		}
 
 		let importinput = document.createElement("textarea")
 		importinput.className = "importinput"
-		importinput.placeholder = "Print the data..."
+		if (lang == "eng") {
+			importinput.placeholder = "Print the data..."
+		} else if (lang == "rus") {
+			importinput.placeholder = "Впиши сюда данные..."
+		}
 		importinput.name = "export"
 		exporth2div.prepend(importinput)
 
 		let datasubmit = document.createElement("button")
 		datasubmit.className = "datasubmit"
-		datasubmit.innerHTML = "<h2 style='margin: 0;'>Submit</h2>"
+		if (lang == "eng") {
+			datasubmit.innerHTML = "<h2>Submit</h2>"
+		} else if (lang == "rus") {
+			datasubmit.innerHTML = "<h2>Окей</h2>"
+		}
 		exporth2div.append(datasubmit)
 
 		let exportexit = document.createElement("button")
 		exportexit.className = "exportexit"
-		exportexit.innerHTML = "<h2 style='margin: 0;'>Exit</h2>"
+		if (lang == "eng") {
+			exportexit.innerHTML = "<h2>Exit</h2>"
+		} else if (lang == "rus") {
+			exportexit.innerHTML = "<h2>Выход</h2>"
+		}
 		exportexitdiv.append(exportexit)
 
 		datasubmit.onclick = () => {
@@ -590,7 +931,6 @@ function shifrimport() {
 	save = save.replace(/</g, ',') // unusual
 }
 
-
 //------CLIKER SECTION----------------------------------------------------------------------------------------
 let cps = 0
 let coin = 0
@@ -603,11 +943,14 @@ clikerbtn.onclick = () => {
 	}
 	cps += 1
 	coin += 1
-	coinvalue.textContent = "Coin: " + coin
+	coinvalue.textContent = coin
 	if (coin == 666) {
 		asec.setAttribute("href", "http://mrtreazzy.github.io/jswebsite1")
-		asec.textContent = "click"
+		asec.innerHTML = "<h1>click<h1>"
 		console.log("!DO NOT CHEAT!")
+		asec.onclick = () => {
+			asec.textContent = ""
+		}
 	}
 	BlockShop(coin);
 }
@@ -729,25 +1072,98 @@ function logKeyPet(e) {
 	}
 }
 
-
 //------PET SECTION----------------------------------------------------------------------------------------
+let inventorybtn = document.getElementById('inventorybtn');
+let inventorydiv = document.getElementById('inventorydiv');
+let invcontainer = document.getElementById('invcontainer');
+let invtitle = document.getElementById('invtitle');
+let inventorydiv2 = document.getElementById('inventory');
+let invchooseitem = ""
+inventorybtn.onclick = () => {
+	intervalstop();
+	inventorydiv.style.width = "100%"
+	invcontainer.setAttribute("class", "invcontainer")
+
+	invtitle.textContent = "Your Inventory"
+	inventorydiv2.innerHTML = "<div class='invprofile'><div class='invavatar'><h2 class='invpetname' id='invpetname'>PetName</h2><img class='invpetimg' id='invpetimg' src='assets/cat.ico' width='100%' height='100%' alt=''><h2 class='invpetlvl'>1 level</h2></div><div class='invstat'><div class='petlvl healthlvl'><h3 class='lvlh3'>Выносливость</h3><progress id='lvlhealth' class='lvlhealth' min='0' max='100' value='100'></progress></div><div class='petlvl hungerlvl'><h3 class='lvlh3'>Прожорливость</h3><progress id='lvlhunger' class='lvlhunger' min='0' max='100' value='100'></progress></div><div class='petlvl happylvl'><h3 class='lvlh3'>Жизнерадостность</h3><progress id='lvlhappy' class='lvlhappy' min='0' max='100' value='100'></progress></div></div></div><div class='invitemsandexit'><div class='invitems'><table class='invtable' id='invtable'><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>				<td>&nbsp;</td>				<td>&nbsp;</td>			</tr>			<tr>				<td>&nbsp;</td>				<td>&nbsp;</td>				<td>&nbsp;</td>				<td>&nbsp;</td>				<td>&nbsp;</td>				<td>&nbsp;</td>				<td>&nbsp;</td>				<td>&nbsp;</td>				<td>&nbsp;</td>				<td>&nbsp;</td>			</tr>			<tr>				<td>&nbsp;</td>				<td>&nbsp;</td>				<td>&nbsp;</td>				<td>&nbsp;</td>				<td>&nbsp;</td>				<td>&nbsp;</td>				<td>&nbsp;</td>				<td>&nbsp;</td>				<td>&nbsp;</td>				<td>&nbsp;</td>			</tr></table></div><div id='invexitdiv' class='invexitdiv'><button id='invactbtn' class='setbtn invexitbtn invexitbtnblock'><h2 style='color: rgb(60,60,60); margin: 0;'>Activate</h2></button><button id='invexitbtn' class='setbtn invexitbtn'><h2 style='color: rgb(60,60,60); margin: 0;'>Exit</h2></button></div></div>"
+	let invexitdiv = document.getElementById('invexitdiv');
+	let invexitbtn = document.getElementById('invexitbtn');
+	let invpetname = document.getElementById('invpetname');
+	let invpetimg = document.getElementById('invpetimg');
+	let lvlhealth = document.getElementById('lvlhealth');
+	let lvlhunger = document.getElementById('lvlhunger');
+	let lvlhappy = document.getElementById('lvlhappy');
+	if (choosepet == "cat") {
+		lvlhealth.setAttribute("value", "40")
+		lvlhunger.setAttribute("value", "50")
+		lvlhappy.setAttribute("value", "80")
+		invpetimg.src = "assets/cat.ico"
+	} else if (choosepet == "dog") {
+		lvlhealth.setAttribute("value", "60")
+		lvlhunger.setAttribute("value", "80")
+		lvlhappy.setAttribute("value", "60")
+		invpetimg.src = "assets/dog.ico"
+	} else if (choosepet == "dragon") {
+		lvlhealth.setAttribute("value", "80")
+		lvlhunger.setAttribute("value", "90")
+		lvlhappy.setAttribute("value", "40")
+		invpetimg.src = "assets/dragon.ico"
+	}
+	
+	invpetname.setAttribute("class", "invpetname " + appercase[num1])
+	invpetname.onclick = () => {
+		num1 = num1 + 1
+		if (num1 > 2) {
+			num1 = 0
+		}
+		invpetname.setAttribute("class", "invpetname " + appercase[num1])
+		petname.setAttribute("class", "petname " + appercase[num1])
+	}
+
+	invexitdiv.className = "invexitdiv"
+	
+	invexitbtn.onclick = () => {
+		inventorydiv.style.width = "0"
+		invcontainer.removeAttribute("class")
+		invtitle.textContent = ""
+		invtip.remove();
+		inventorydiv2.innerHTML = ""
+		invexitdiv.removeAttribute("class")
+		invexitbtn.remove();
+		intervalstats();
+	}
+}
+
 let appercase = ["petnamecapitalize", "petnameuppercase", "petnamelowercase"]
 let num1 = 0
 petname.onclick = () => {
-	petname.setAttribute("class", "petname " + appercase[num1])
 	num1 = num1 + 1
 	if (num1 > 2) {
 		num1 = 0
 	}
+	petname.setAttribute("class", "petname " + appercase[num1])
 }
-murcount = 0
+let murcount = 0
+let murrandom = Math.random()
+let murr1 = new Audio('assets/murr1.mp3')
+let murr2 = new Audio('assets/murr2.mp3')
 petbtn.onclick = () => {
 	murcount += 1
 	if (murcount >= 100) {
 		mur.textContent = "хватит."
 	} else {
-		mur.textContent = "murr x" + murcount + " :3"
 		stathappy.value = stathappy.value + 1
+		if (choosepet == "cat") {
+			mur.textContent = "murr x" + murcount + " :3"
+			if (murrandom < 0.7) {
+				murr1.play();
+			} else if (murrandom >= 0.7) {
+				murr2.play();
+			}
+			murrandom = Math.random()
+		} else {
+			mur.textContent = " :3 x" + murcount
+		}
 	}
 }
 
@@ -763,11 +1179,10 @@ let itemico3 = document.getElementById('itemico3')
 let itemico4 = document.getElementById('itemico4')
 let itemico5 = document.getElementById('itemico5')
 
-
 itemshop1.onclick = () => {
 	if (coin >= 10) {
 		coin = coin - 10
-		coinvalue.textContent = "Coin: " + coin
+		coinvalue.textContent = coin
 		stathunger.value = stathunger.value + 10
 		stathappy.value = stathappy.value + 5
 		BlockShop(coin);
@@ -776,7 +1191,7 @@ itemshop1.onclick = () => {
 itemshop2.onclick = () => {
 	if (coin >= 20) {
 		coin = coin - 20
-		coinvalue.textContent = "Coin: " + coin
+		coinvalue.textContent = coin
 		stathunger.value = stathunger.value + 20
 		stathappy.value = stathappy.value + 10
 		BlockShop(coin);
@@ -785,7 +1200,7 @@ itemshop2.onclick = () => {
 itemshop3.onclick = () => {
 	if (coin >= 30) {
 		coin = coin - 30
-		coinvalue.textContent = "Coin: " + coin
+		coinvalue.textContent = coin
 		stathunger.value = stathunger.value + 30
 		stathappy.value = stathappy.value + 15
 		BlockShop(coin);
@@ -794,7 +1209,7 @@ itemshop3.onclick = () => {
 itemshop4.onclick = () => {
 	if (coin >= 40) {
 		coin = coin - 40
-		coinvalue.textContent = "Coin: " + coin
+		coinvalue.textContent = coin
 		stathunger.value = stathunger.value + 40
 		stathappy.value = stathappy.value + 20
 		BlockShop(coin);
@@ -803,7 +1218,7 @@ itemshop4.onclick = () => {
 itemshop5.onclick = () => {
 	if (coin >= 50) {
 		coin = coin - 50
-		coinvalue.textContent = "Coin: " + coin
+		coinvalue.textContent = coin
 		stathunger.value = stathunger.value + 50
 		stathappy.value = stathappy.value + 25
 		BlockShop(coin);
@@ -862,13 +1277,12 @@ function FinishEnding() {
 	finishtextdiv.style.width = "100%"
 
 	titles.setAttribute("class", "titles")
-	titles.textContent = "Pet Evolution v0.7 (Adaptive Update) | Made by MrTreazzy"
+	titles.textContent = "Pet Evolution v0.85 | Made by MrTreazzy"
 
 	finishtext1.setAttribute("class", "finishtext")
 	finishtext1.textContent = "Click here for Congratulations!"
 	let finishtexteng = ["Thank you for playing in my new project Pet Evolution!\
 	I really proud of you cuz its just awesome what you just finish my game!\
-	You are clicked 100 times, its been very hard i guess...\
 	And so, its my first project, my first game.\
 	Sure, its just first version of this project and im going to update it.\
 	I hope you will waiting for release of new version of this game, isnt it?)\
@@ -884,17 +1298,16 @@ function FinishEnding() {
 	}
 
 	gametime1.setAttribute("class", "gametime")
-	gametime1.textContent = "Well, you finished the game in " + sec + " second."
+	gametime1.textContent = "Well, you finished the game in " + minstr + " minutes and " + secstr + " second."
 
 	gametime2.setAttribute("class", "gametime")
-	gametime2.textContent = "Неплохо, ты прошел игру за " + sec + " секунд."
+	gametime2.textContent = "Неплохо, ты прошел игру за " + minstr + " минут и " + secstr + " секунд."
 
 	finishtext2.setAttribute("class", "finishtext")
 	finishtext2.textContent = "Нажми сюда для поздравлений!"
 	let finishtextrus = ["RUS: А теперь на понятном языке. На англ писал без переводчика кстати :3\
 	Вобщем пасибочки тебе за игру на моем проекте Pet Evolution!\
 	Наверное мне стоит гордится тобой, ведь ты тот, кто действительно ее решил пройти.\
-	Думаю это было трудно, ты кликнул 100 раз чтобы ее пройти...\
 	Но все же, это мой первый проект, моя первая игра.\
 	Конечно, это была первая версия этой игры и я буду ее улучшать в скором времени.\
 	Надеюсь, ты оценишь ее и будешь ждать выход новой версии, не так ли?)\
@@ -918,35 +1331,8 @@ function FinishEnding() {
 	}
 }
 
-// let regbtn = document.getElementById('regbtn');
-// let regtext = document.getElementById('regtext');
-// let errregdiv = document.getElementById('errregdiv');
-
-// regdialogue = ["- Непонял, как это не работает?", "- Незнаю, скорее всего кто-то недоработал механизм регистрации!", "- Хмм, действительно, её нет. Хорошо, тогда вернем нашего посетителя обратно.", "- Окей, возвращаю..."]
-
-// regbtn.onclick = () => {
-// 	errregdiv.style.width = "100%"
-// 	regtext.setAttribute("class", "regtext")
-// 	regtext.textContent = "- Упс! Кажется регистрация не работает..."
-// 	num = 0
-// 	regtext.onclick = () => {
-// 		regtext.textContent = regdialogue[num]
-// 		num = num + 1
-// 		if (num == 4) {
-// 			num = 3
-// 			setTimeout(() => {
-// 				regtext.textContent = ""
-// 				errregdiv.style.width = "0"
-// 				regtext.removeAttribute("class")
-// 				regbtn.remove();
-// 			}, 3000)
-// 		}
-// 	}
-// }
-
 let hackdiv = document.getElementById('hackdiv');
 let hackcoinh3 = document.getElementById('hackcoinh3');
-let hackprogressh3 = document.getElementById('hackprogressh3');
 let br1 = document.getElementById('br1');
 let br2 = document.getElementById('br2');
 let policediv = document.getElementById('policediv');
@@ -959,7 +1345,7 @@ function item5open(coin) {
 	itemshop5.onclick = () => {
 		if (coin >= 50) {
 			coin = coin - 50
-			coinvalue.textContent = "Coin: " + coin
+			coinvalue.textContent = coin
 			BlockShop(coin);
 		}
 	}
@@ -972,7 +1358,6 @@ function item5hack(coin) {
 let n = 0
 let ticket = 0
 document.addEventListener('keydown', logKey);
-
 function logKey(e) {
 	if (ticket == 0) {
 		let a = `${e.key}`
@@ -995,12 +1380,9 @@ function logKey(e) {
 				n = 0
 				ticket = 1
 				hackcoinh3.setAttribute("class", "regtext")
-				hackprogressh3.setAttribute("class", "regtext")
 				hackdiv.style.width = "100%"
 				hackcoinh3.textContent = "Coin: "
-				hackprogressh3.textContent = "Progress: "
 				hackcoinh3.style.color = "#fff"
-				hackprogressh3.style.color = "#fff"
 	
 				let coininput = document.createElement('input')
 				coininput.id = "hackcoininput"
@@ -1008,13 +1390,6 @@ function logKey(e) {
 				coininput.name = "coin"
 				coininput.className = "hackinput"
 				hackcoinh3.append(coininput);
-				
-				let proginput = document.createElement('input')
-				proginput.id = "hackproginput"
-				proginput.type = "number"
-				proginput.name = "prog"
-				proginput.className = "hackinput"
-				hackprogressh3.append(proginput);
 				
 				let hacksubmitfake = document.createElement('input')
 				hacksubmitfake.id = "hacksubmitfake"
@@ -1031,17 +1406,12 @@ function logKey(e) {
 				br2.after(hacksubmit);
 	
 				hacksubmit.onclick = () => {
-					if (coininput.value >= 0 || coininput.value < 0) {
-						coin = coininput.valueAsNumber
-						coinvalue.textContent = "Coin: " + coin
-					}
-					if (proginput.value >= 0 || proginput.value < 0) {
-					}
+					coin = Number(coininput.value)
+					coinvalue.textContent = coin
+
 					hackcoinh3.textContent = ""
-					hackprogressh3.textContent = ""
 					hackdiv.style.width = "0"
 					coininput.remove();
-					proginput.remove();
 					hacksubmitfake.remove();
 					hacksubmit.remove();
 					item5open(coin);
@@ -1049,10 +1419,8 @@ function logKey(e) {
 				}
 				hacksubmitfake.onclick = () => {
 					hackcoinh3.textContent = ""
-					hackprogressh3.textContent = ""
 					hackdiv.style.width = "0"
 					coininput.remove();
-					proginput.remove();
 					hacksubmitfake.remove();
 					hacksubmit.remove();
 					item5open(coin);
@@ -1072,4 +1440,3 @@ function logKey(e) {
 		}
 	}
 }
-

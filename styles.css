@@ -3,6 +3,9 @@ html, body {
 	height: 100%;
 	width: 100%;
 }
+h1,h2,h3,h4,h5,h6 {
+	margin: 0;
+}
 body {
 	margin: 0;
 	display: grid;
@@ -39,11 +42,11 @@ body {
 	src: url("assets/Font/LibreBaskerville-Bold.ttf");
 }
 .title {
-	margin: 0;
 	font-family: Libre Baskerville;
 	font-size: 37px;
 	color: #d4d4d4;
 	text-shadow: 0 0 2px #e2e2e2;
+	text-align: center;
 }
 
 /*-----ВЫЛЕЗАЮЩИЕ СТРАНИЦЫ---------------------------------------------------------*/
@@ -148,6 +151,105 @@ hr {
 	border-radius: 25px;
 	font-size: 30px;
 }
+.choosestatsdiv {
+	display: grid;
+	width: 100%;
+	height: 100%;
+	justify-items: center;
+	align-items: center;
+	grid-template-rows: 25% 25% 25% 25%;
+}
+.chooseh1 {
+	font-size: 35px;
+}
+.choosestath3 {
+	font-size: 17px;
+}
+.choosepetprog {
+	width: 100%;
+}
+.choosestat {
+	display: grid;
+	grid-template-rows: 30% 70%;
+	width: 85%;
+	height: 100%;
+	justify-items: start;
+}
+.welcomediv {
+	animation: welcome 6s cubic-bezier(0.21, 0.03, 1, 1);
+}
+@keyframes welcome {
+	0% {
+		background-color: rgb(222, 230, 236);
+	}
+	30% {
+		background-color: #000;
+	}
+	80% {
+		background-color: #000;
+	}
+	100% {
+		background-color: transparent;
+	}
+}
+.welcomeh1 {
+	position: relative;
+	margin: 50vh 0 0 25vw;
+	width: 50vw;
+	text-align: center;
+	font-family: Minecraft Rus;
+	color: #fff;
+	font-size: 4em;
+	letter-spacing: 10px;
+	overflow: hidden;
+	background: linear-gradient(90deg, transparent, #fff, #fff, transparent);
+	background-repeat: no-repeat;
+	background-size: 80%;
+	animation: welcometext 3.5s linear;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+@keyframes welcometext {
+	0% {
+		background-position:  -500%;
+		letter-spacing: 0px;
+	}
+	100% {
+		background-position:  500%;
+		letter-spacing: 35px;
+	}
+}
+.welcomeh1two {
+	position: relative;
+	margin: 50vh 0 0 25vw;
+	width: 50vw;
+	text-align: center;
+	font-family: Minecraft Rus;
+	color: #fff;
+	font-size: 4em;
+	letter-spacing: 10px;
+	animation: welcometexttwo 3.5s linear;
+}
+@keyframes welcometexttwo {
+	0% {
+		color: transparent;
+		letter-spacing: 0px;
+	}
+	25% {
+		color: transparent;
+		letter-spacing: 0px;
+	}
+	60% {
+		color: #fff;
+	}
+	80% {
+		color: #fff;
+	}
+	100% {
+		color: transparent;
+		letter-spacing: 35px;
+	}
+}
 
 /*-----SETTING SECTION------------------------------------------------------------*/
 .settingdiv {
@@ -179,7 +281,6 @@ hr {
 	display: inline-flex;
 }
 .settingh3 {
-	margin: 0;
 	color: rgb(34, 34, 34);
 	text-shadow: -1px 1px 2px rgb(110, 110, 110);
 }
@@ -233,6 +334,7 @@ hr {
 .exportexit {
 	width: 20%;
   height: 45%;
+	border-radius: 10px;
 }
 .exporth2div {
 	display: grid;
@@ -248,7 +350,8 @@ hr {
 }
 .exportcopy {
 	width: 15%;
-	height: 80%;
+	height: 90%;
+	border-radius: 10px;
 }
 .settingcontactus {
 	font-style: italic;
@@ -364,6 +467,10 @@ hr {
 	justify-content: center;
 	align-content: center;
 }
+.clickertitlediv {
+	grid-template-columns: 1fr 1fr 1fr;
+	justify-items: center;
+}
 .clikerbtndiv {
 	display: grid;
 	justify-items: center;
@@ -373,11 +480,9 @@ hr {
 	background-color: #0000000a;
 }
 .clicksh3 {
-	margin: 0;
 	font-size: 20px;
 }
 .clicksh3num {
-	margin: 0;
 	font-size: 23px;
 	font-weight: bolder;
 }
@@ -413,6 +518,141 @@ hr {
 	aspect-ratio: 375 / 124;
 	margin: 33vh 0 0 3.5vw;
 }
+.secretlink {
+	text-decoration: none;
+	color: #000;
+	filter: blur(3px);
+	font-size: 35px;
+	font-family: Libre Baskerville;
+	text-align: center;
+}
+
+/*------INVENTORY SECTION------------------------------------------------------*/
+.inventorybtn {
+	border-radius: 20px;
+  width: 110px;
+  height: 50px;
+  background-color: rgb(139, 139, 139);
+  box-shadow: inset 0 0 10px #cecece;
+	font-size: 17px;
+	font-weight: bold;
+  cursor: pointer;
+}
+.inventorybtn:hover {
+	box-shadow: inset 0 0 10px rgb(27, 27, 27);
+}
+.inventorydiv {
+	position: absolute;
+	display: grid;
+	background-color: rgba(0, 0, 0, 0.20);
+	height: 100%;
+	justify-items: center;
+  align-items: center;
+}
+.invcontainer {
+	width: 65%;
+	height: 60%;
+	/* background-color: rgb(201, 1, 139); */
+	background-color: rgb(198, 198, 198);
+	/* background-color: rgb(141, 139, 142); */
+	border-radius: 50px;
+	padding: 2.2%;
+	box-shadow: inset 0 0 9vh rgb(231, 231, 231), 0 0 40vh #000000e0;
+	display: grid;
+	grid-template-rows: 10% 90%;
+}
+.invtitlediv {
+	display: grid;
+	grid-template-columns: 27% 73%;
+}
+.invtip {
+	color: rgb(94 94 94);
+    font-size: 20px;
+    display: grid;
+    align-items: center;
+}
+.invexitdiv {
+	display: grid;
+	justify-items: end;
+	color: rgb(65, 65, 65);
+	grid-template-columns: 3fr 1fr;
+    align-items: end;
+    justify-content: end;
+}
+.invexitbtn {
+	height: 72%;
+	aspect-ratio: 3.5/1;
+	border-radius: 12px;
+	background-color: rgb(138, 138, 138);
+	box-shadow: inset 0 0 10px #c5c5c5;
+	border: groove 4px;
+}
+.invexitbtn:hover {
+	box-shadow: inset 0 0 2rem rgb(99, 99, 99);
+}
+.invexitbtnblock {
+	box-shadow: inset 0 0 2rem rgb(99, 99, 99);
+}
+.inventory {
+	display: grid;
+	grid-template-columns: 25% 75%;
+}
+.invprofile {
+	display: grid;
+	grid-template-rows: 60% 40%;
+	border-right: 2px double #000;
+}
+.invavatar {
+	display: grid;
+	justify-items: center;
+  align-items: center;
+  justify-content: center;
+}
+.invitemsandexit {
+	display: grid;
+	grid-template-rows: 85% 15%;
+	margin-left: 2.5%;
+}
+.invitems {
+	display: grid;
+	/* background-color: #230e0b; */
+}
+.invpetname {
+	font-size: 30px;
+}
+.invpetimg {
+	height: 150px;
+	aspect-ratio: 1 / 1;
+}
+.invstat {
+	display: grid;
+	justify-items: center;
+  align-items: center;
+	margin-top: 10px;
+}
+.petlvl {
+	display: grid;
+  grid-template-rows: 30% 70%;
+  width: 85%;
+  height: 100%;
+  justify-items: start;
+}
+.lvlhealth, .lvlhunger, .lvlhappy {
+	height: 25px;
+	width: 100%;
+}
+.lvlh3 {
+	font-size: 17px;
+}
+td {
+	background-color: rgb(130, 130, 130);
+	border-top: 4px inset rgb(55, 55, 55);
+	border-left: 4px inset rgb(55, 55, 55);
+	border-bottom: 4px inset #fff;
+	border-right: 4px inset #fff;
+	width: 10%;
+	height: 20%;
+}
 
 /*------PET SECTION------------------------------------------------------------*/
 .pet {
@@ -421,6 +661,9 @@ hr {
 .pettitlediv {
 	grid-template-columns: 1fr 1fr 1fr;
 	justify-items: center;
+}
+.profilediv {
+	display: grid;
 }
 .reg {
 	display: grid;
@@ -432,21 +675,25 @@ hr {
 	width: 100px;
 	height: 50px;
 	background-color: rgb(139, 139, 139);
-	box-shadow: inset 0 0 10px #d3d3d3;
+	box-shadow: inset 0 0 10px #cecece;
+	font-size: 17px;
+	font-weight: bold;
 	cursor: pointer;
 }
 .settingbtn:hover {
 	box-shadow: inset 0 0 10px rgb(27, 27, 27);
 }
-.settingh3 {
-	font-size: 17px;
-	margin: 0;
-}
 .menu {
 	display: grid;
-	grid-template-columns: 70% 30%;
+	grid-template-columns: 1fr 25% 30%;
 	width: 100%;
 	height: 100%;
+}
+.timeh4 {
+	font-size: 22px;
+	color: #c0c0c0;
+	margin: 5px 0 0 15px;
+	text-shadow: 0 0 5px #9c9c9c;
 }
 .petstats {
 	border-bottom: 4px groove #c5c5c5;
@@ -467,21 +714,29 @@ hr {
 	width: 80%;
 }
 .stath3	{
-	font-size: 20px;
-	margin: 0;
+	font-size: 17px;
+}
+.moneydiv {
+	height: 30%;
+	width: 96%;
+	margin: 5px 4% 0 0;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }
 .coindiv {
 	display: grid;
-  justify-items: center;
-	align-items: center;
-  height: 100%;
+	grid-template-columns: 1fr 2fr;
+	height: 100%;
 	width: 100%;
+	align-items: center;
+	justify-items: center;
 }
-.coinh3 {
-	margin: 5px 0 0 40%;
-	font-size: 35px;
+.coinh5 {
+	font-size: 22px;
 	text-shadow: 0 0 5px #a8a8a8;
 	color: #c5c5c5;
+	width: 100%;
+	text-align: center;
 }
 .petdiv {
 	display: grid;
@@ -504,6 +759,8 @@ hr {
 .petname {
 	font-size: 30px;
 	cursor: pointer;
+	margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
 }
 .petnamecapitalize {
 	text-transform: capitalize;
@@ -522,6 +779,23 @@ hr {
 	justify-items: center;
 	width: 100%;
 	height: 27px;
+	margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+}
+.finishbtn {
+	width: 140px;
+	height: 40px;
+	border-radius: 20px;
+}
+.finishbtnOpen {
+	width: 140px;
+	height: 40px;
+	border-radius: 20px;
+	background-color: #ff9a26;
+	box-shadow: 0 0 10px rgb(0, 0, 0), inset 0 0 13px #ffd7aa;
+}
+.finishbtnOpen:hover {
+	box-shadow: inset 0 0 13px rgb(27, 27, 27);
 }
 .finishtextbtn {
 	margin: 0;
@@ -565,6 +839,7 @@ hr {
 }
 .itemtitle {
 	margin: 5px;
+	text-shadow: 0 0 2px #3e3e3e;
 }
 .itemprice {
 	margin: 5px;
