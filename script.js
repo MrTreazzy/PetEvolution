@@ -526,6 +526,7 @@ petform_confirm.onclick = () => {
 	}
 }
 let welcomeh1 = null
+let welcomeaudio = new Audio('assets/welcome.mp3')
 function welcomewithload() {
 	petform_title.textContent = "Пасибочки! :3"
 	petform_title2.textContent = "Сейчас загрузим твою игру...)"
@@ -552,10 +553,11 @@ function welcomewithload() {
 		container.remove();
 
 		rand1 = Math.random()
-		if (rand1 < 0.7) {
+		if (rand1 < 0.75) {
 			randtext1 = "welcomeh1"
 		} else {
 			randtext1 = "welcomeh1two"
+			welcomeaudio.play();
 		}
 		petformdiv.setAttribute("class", "textdiv welcomedivtwo welcomediv")
 		welcomeh1 = document.createElement("h1")
